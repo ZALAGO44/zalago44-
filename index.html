@@ -1,4 +1,39 @@
 <!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZALAGO44 PRO P2P</title><script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>body{font-family:Arial,sans-serif;background:#050505;color:#fff}.glass{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}</style>
+</head><body>
+<header class="sticky top-0 bg-black border-b border-white/10 p-4 flex justify-between items-center z-20">
+<div class="flex gap-2 items-center"><div class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-black font-bold">Z</div><b>ZALAGO44 PRO</b><span class="text-[9px] bg-yellow-400 text-black px-2 py-1 rounded-full">P2P</span></div>
+<div id="authBtn"><button onclick="document.getElementById('authM').style.display='flex'" class="bg-yellow-400 text-black px-5 py-2 rounded-full font-bold text-sm">Login</button></div>
+</header>
+<div class="flex gap-2 p-4"><button class="flex-1 bg-yellow-400 text-black py-3 rounded-full font-bold text-sm">P2P Market</button>
+<button onclick="openW()" class="flex-1 glass py-3 rounded-full text-sm">Wallet</button><button onclick="openA()" class="glass px-3 py-3 rounded-full text-xs">Admin</button></div>
+<div class="p-4"><div class="flex justify-between"><b>Buy / Sell Offers</b><button onclick="checkLogin()" class="bg-yellow-400 text-black px-4 py-2 rounded-full text-xs font-bold">+ Create Offer</button></div>
+<div class="flex gap-2 mt-3"><button class="bg-yellow-400 text-black px-4 py-2 rounded-full text-xs">All</button><button class="glass px-4 py-2 rounded-full text-xs">Sell</button><button class="glass px-4 py-2 rounded-full text-xs">Buy</button></div>
+<div id="list" class="mt-4 space-y-3"></div>
+</div>
+
+<!-- LOGIN MODAL FIXED -->
+<div id="authM" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:99;align-items:center;justify-content:center;padding:16px">
+<div class="bg-[#111] border border-white/10 rounded-2xl p-6 w-full max-w-sm">
+<div class="flex justify-between mb-4"><b>Login / Register</b><button onclick="document.getElementById('authM').style.display='none'" class="w-8 h-8 glass rounded-full">X</button></div>
+<input id="u" placeholder="Username" class="w-full bg-black border border-white/10 rounded-xl px-4 py-3 mb-3 text-sm">
+<input id="p" type="password" placeholder="Password" class="w-full bg-black border border-white/10 rounded-xl px-4 py-3 mb-3 text-sm">
+<button onclick="login()" class="w-full bg-yellow-400 text-black py-3 rounded-full font-bold">Continue</button>
+<p class="text-[10px] text-gray-500 mt-2 text-center">Escrow: TJ2Vhgfo7w5c1JLxhBnkLH9psKsLBfaBrx TRC20</p>
+</div></div>
+
+<script>
+const ESCROW="TJ2Vhgfo7w5c1JLxhBnkLH9psKsLBfaBrx";
+let users=JSON.parse(localStorage.getItem('u')||'[]');let cur=JSON.parse(localStorage.getItem('c')||'null');let offers=JSON.parse(localStorage.getItem('o')||'[]');
+function login(){let username=document.getElementById('u').value.trim();let pass=document.getElementById('p').value.trim();if(!username||!pass)return alert('Fill all');let found=users.find(x=>x.u===username);if(!found){users.push({u:username,p:pass});cur={u:username};alert('✅ Account created! Welcome '+username)}else{if(found.p!==pass)return alert('Wrong password');cur={u:username}}localStorage.setItem('u',JSON.stringify(users));localStorage.setItem('c',JSON.stringify(cur));document.getElementById('authM').style.display='none';location.reload()}
+function checkLogin(){if(!cur){document.getElementById('authM').style.display='flex';return}let amt=prompt('Amount USDT to sell? e.g 100');if(!amt)return;let rate=prompt('Rate GH₵ per $? e.g 16.5','16.5');let momo=prompt('Your MoMo number?');if(!rate||!momo)return;offers.push({u:cur.u,amt,rate,momo,fee:amt*rate*0.02});localStorage.setItem('o',JSON.stringify(offers));alert('✅ Offer Published! Fee GH₵ '+(amt*rate*0.02).toFixed(2)+' to your wallet!');render()}
+function openW(){let escrowQR='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data='+ESCROW;let html=`<div style="position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:99;display:flex;align-items:center;justify-content:center;padding:16px" onclick="this.remove()"><div class="bg-[#111] border border-white/10 rounded-2xl p-5 w-full max-w-sm" onclick="event.stopPropagation()"><b>Escrow Wallet</b><p class="text-xs text-gray-400">${ESCROW}</p><div class="bg-white p-3 rounded-xl flex justify-center mt-3"><img src="${escrowQR}" class="w-48"></div><div class="flex gap-2 mt-3"><input value="${ESCROW}" readonly class="flex-1 bg-black border border-white/10 rounded-xl px-2 py-2 text-[10px]"><button onclick="navigator.clipboard.writeText('${ESCROW}');alert('Copied!')" class="bg-yellow-400 text-black px-3 rounded-xl text-xs">Copy</button></div><button onclick="this.closest('div').parentElement.remove()" class="w-full bg-yellow-400 text-black py-2 rounded-full mt-3 font-bold text-sm">Close</button></div></div>`;document.body.insertAdjacentHTML('beforeend',html)}
+function openA(){let pass=prompt('Admin Password? Default: ZALAGO44ADMIN');if(pass!=='ZALAGO44ADMIN')return alert('Wrong');let fees=offers.reduce((s,o)=>s+Number(o.fee||0),0);alert(`👑 ADMIN PANEL\nUsers: ${users.length}\nOffers: ${offers.length}\nTotal Fees Earned: GH₵ ${fees.toFixed(2)}\n\nEscrow Wallet:\n${ESCROW}\n\nAll deposits go to YOU!`)}
+function render(){let h='';if(offers.length===0)h='<div class="glass rounded-xl p-6 text-center text-sm text-gray-400">No offers yet. Tap + Create Offer to be first!</div>';else offers.slice().reverse().forEach(o=>{h+=`<div class="glass rounded-xl p-4"><div class="flex justify-between"><div><b class="text-sm">${o.u}</b><span class="text-[9px] bg-green-500/20 text-green-400 px-2 py-1 rounded-full ml-2">SELL ${o.amt} USDT</span><p class="text-xs text-gray-400">Rate GH₵ ${o.rate} • MoMo ${o.momo}</p></div><div class="text-right"><p class="font-bold text-sm">GH₵ ${(o.amt*o.rate).toFixed(2)}</p><p class="text-[10px] text-gray-400">Fee GH₵ ${o.fee.toFixed(2)}</p></div></div><button onclick="alert('Trade: Send GH₵ ${(o.amt*o.rate).toFixed(2)} to ${o.momo} and seller releases USDT to escrow ${ESCROW}')" class="mt-3 w-full bg-green-500 text-black py-2 rounded-full font-bold text-xs">Buy USDT</button></div>`});document.getElementById('list').innerHTML=h;if(cur){document.getElementById('authBtn').innerHTML=`<span class="text-xs">${cur.u}</span> <button onclick="localStorage.removeItem('c');location.reload()" class="glass px-2 py-1 rounded-full text-xs ml-2">Logout</button>`}}render();
+</script></body></html><!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ZALAGO44 PRO - P2P Exchange</title><script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
