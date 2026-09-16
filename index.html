@@ -1,1 +1,85 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZALAGO44</title><meta name="theme-color" content="#FFD700"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}body{background:#f5f7fb;padding-bottom:80px}.top{background:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 20px rgba(0,0,0,.06);position:sticky;top:0}.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px}.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#FFD700,#FFA500);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;box-shadow:0 4px 15px rgba(255,165,0,.4)}.balance{margin:20px;background:linear-gradient(135deg,#fff,#fffef5);border:1px solid #ffeaa7;border-radius:24px;padding:22px;box-shadow:0 10px 40px rgba(255,215,0,.15)}.amount{font-size:38px;font-weight:800;margin:6px 0 16px}.btns{display:flex;gap:10px}.btn{flex:1;padding:13px;border-radius:14px;font-weight:700;border:none}.gold{background:linear-gradient(135deg,#FFD700,#FFB800);box-shadow:0 6px 20px rgba(255,184,0,.35)}.white{background:#f1f5f9}.coin{margin:12px 20px;background:#fff;border-radius:18px;padding:16px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px rgba(0,0,0,.04)}.coin-left{display:flex;gap:12px;align-items:center}.icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff}.bnb{background:#F3BA2F}.eth{background:#627EEA}.btc{background:#F7931A}.usdt{background:#26A17B}.right{text-align:right}.amt{font-weight:700}.usd{font-size:12px;color:#94a3b8}.nav{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:12px 0 22px;border-top:1px solid #f1f5f9}.nav-item{font-size:10px;color:#94a3b8;text-align:center}.active{color:#000}</style></head><body><div class="top"><div class="logo"><div class="logo-icon">Z</div>ZALAGO44</div><div>🔍 🔔</div></div><div class="balance"><div style="font-size:12px;color:#64748b;font-weight:600">TOTAL BALANCE • USD</div><div class="amount">$0.00</div><div class="btns"><button class="btn gold">Deposit</button><button class="btn white">Trade</button></div></div><div style="margin:10px 20px;display:flex;justify-content:space-between"><b>My Assets</b><span style="color:#94a3b8">See all ›</span></div><div class="coin"><div class="coin-left"><div class="icon bnb">B</div><div><div style="font-weight:700">BNB</div><div style="font-size:11px;color:#94a3b8">BNB Chain</div></div></div><div class="right"><div class="amt">0.00</div><div class="usd">$0.00</div></div></div><div class="coin"><div class="coin-left"><div class="icon eth">E</div><div><div style="font-weight:700">ETH</div><div style="font-size:11px;color:#94a3b8">Ethereum</div></div></div><div class="right"><div class="amt">0.00</div><div class="usd">$0.00</div></div></div><div class="coin"><div class="coin-left"><div class="icon btc">₿</div><div><div style="font-weight:700">BTC</div><div style="font-size:11px;color:#94a3b8">Bitcoin</div></div></div><div class="right"><div class="amt">0.00</div><div class="usd">$0.00</div></div></div><div class="coin"><div class="coin-left"><div class="icon usdt">T</div><div><div style="font-weight:700">USDT</div><div style="font-size:11px;color:#94a3b8">Tether</div></div></div><div class="right"><div class="amt">0.00</div><div class="usd">$0.00</div></div></div><div class="nav"><div class="nav-item active">⌂<br>Home</div><div class="nav-item">◫<br>Markets</div><div class="nav-item">⇄<br>Trade</div><div class="nav-item">◫<br>Futures</div><div class="nav-item">◯<br>Wallet</div></div></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZALAGO44 - Live Crypto Exchange</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
+body{font-family:'Space Grotesk',sans-serif;background:#0a0a0a;color:white}
+.glass{background:rgba(255,255,255,0.07);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1)}
+.live{animation:blink 1s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</head>
+<body>
+<header class="p-4 flex justify-between items-center border-b border-white/10 sticky top-0 bg-black/90 z-50">
+<div class="flex items-center gap-2"><div class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-black font-bold">Z</div><b>ZALAGO<span class="text-yellow-400">44</span></b><span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full"><span class="w-2 h-2 bg-green-400 rounded-full inline-block live"></span> LIVE</span></div>
+<button onclick="document.getElementById('dep').classList.remove('hidden');document.getElementById('dep').classList.add('flex')" class="bg-yellow-400 text-black px-4 py-2 rounded-full font-bold text-sm">Deposit</button>
+</header>
+
+<div class="p-4"><div class="glass rounded-2xl p-5"><p class="text-gray-400 text-sm">Total Balance (GHS)</p><h1 class="text-3xl font-bold mt-1">GH₵ 0.00</h1><div class="grid grid-cols-4 gap-3 mt-5 text-center text-xs">
+<button onclick="document.getElementById('dep').classList.remove('hidden');document.getElementById('dep').classList.add('flex')"><div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-black mx-auto"><i class="fas fa-arrow-down"></i></div>Deposit</button>
+<button onclick="alert('Withdraw - Coming V3')"><div class="w-12 h-12 glass rounded-full flex items-center justify-center mx-auto"><i class="fas fa-arrow-up"></i></div>Withdraw</button>
+<button onclick="show('p2p')"><div class="w-12 h-12 glass rounded-full flex items-center justify-center mx-auto"><i class="fas fa-users"></i></div>P2P</button>
+<button onclick="show('markets')"><div class="w-12 h-12 glass rounded-full flex items-center justify-center mx-auto"><i class="fas fa-chart-line"></i></div>Markets</button>
+</div></div></div>
+
+<div class="px-4 flex gap-2">
+<button id="b-wallet" onclick="show('wallet')" class="px-4 py-2 rounded-full bg-yellow-400 text-black font-bold text-sm">Wallet</button>
+<button id="b-markets" onclick="show('markets')" class="px-4 py-2 rounded-full glass text-sm">Markets</button>
+<button id="b-p2p" onclick="show('p2p')" class="px-4 py-2 rounded-full glass text-sm">P2P</button>
+</div>
+
+<div id="c-wallet" class="p-4 space-y-3"><div class="flex justify-between"><b>My Assets</b><span class="text-xs text-green-400">● Live Prices</span></div><div id="list" class="space-y-2"></div></div>
+<div id="c-markets" class="p-4 hidden"><b>Markets - Top Coins</b><div id="list2" class="space-y-2 mt-3"></div></div>
+<div id="c-p2p" class="p-4 hidden"><div class="glass rounded-2xl p-6 text-center"><i class="fas fa-users text-4xl text-yellow-400"></i><h3 class="font-bold text-lg mt-2">ZALAGO P2P</h3><p class="text-sm text-gray-400 mt-2">Buy & Sell USDT with GHS</p><div class="mt-4 space-y-2 text-sm text-left"><div class="flex justify-between glass p-3 rounded-xl"><span>Buy USDT</span><span class="text-green-400">GH₵ 16.20</span></div><div class="flex justify-between glass p-3 rounded-xl"><span>Sell USDT</span><span class="text-red-400">GH₵ 15.90</span></div></div><button class="mt-4 w-full bg-yellow-400 text-black py-3 rounded-full font-bold">Start Trading</button></div></div>
+
+<div id="dep" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4 z-50" onclick="this.classList.add('hidden')">
+<div class="bg-zinc-900 border border-white/10 rounded-2xl p-5 w-full max-w-sm" onclick="event.stopPropagation()">
+<div class="flex justify-between mb-4"><b>Deposit Crypto</b><button onclick="document.getElementById('dep').classList.add('hidden')" class="w-8 h-8 glass rounded-full"><i class="fas fa-times"></i></button></div>
+<div class="bg-white p-4 rounded-xl text-black text-center font-bold">ZALAGO44<br><span id="coinTxt">BTC</span> Deposit<br><span class="text-xs">Network: BEP20</span></div>
+<p class="text-xs mt-4 text-gray-400">Your <span id="coinTxt2">BTC</span> Address</p><div class="flex gap-2 mt-1"><input id="addr" readonly class="flex-1 bg-black border border-white/10 rounded-lg px-3 py-2 text-xs" value="0x44ZALAGO44BTC..."><button onclick="navigator.clipboard.writeText(document.getElementById('addr').value);alert('Copied!')" class="bg-yellow-400 text-black px-3 rounded-lg text-xs font-bold">Copy</button></div>
+<p class="text-[10px] text-gray-500 mt-3 text-center">Send only <span id="coinTxt3">BTC</span> on BNB Chain. Min $5</p>
+</div>
+</div>
+
+<script>
+const coins=[{id:'bitcoin',s:'BTC',n:'Bitcoin',c:'bg-orange-500',i:'₿'},{id:'ethereum',s:'ETH',n:'Ethereum',c:'bg-blue-500',i:'Ξ'},{id:'binancecoin',s:'BNB',n:'BNB',c:'bg-yellow-500',i:'B'},{id:'solana',s:'SOL',n:'Solana',c:'bg-purple-500',i:'S'},{id:'tether',s:'USDT',n:'Tether',c:'bg-green-500',i:'$'},{id:'usd-coin',s:'USDC',n:'USDC',c:'bg-blue-400',i:'$'}];
+let pr={};
+async function load(){
+try{
+const ids=coins.map(x=>x.id).join(',');
+const r=await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`);
+const d=await r.json();
+coins.forEach(x=>{if(d[x.id])pr[x.s]={p:d[x.id].usd,ch:d[x.id].usd_24h_change}});
+render();
+}catch(e){}
+}
+function render(){
+let h='';
+coins.forEach(x=>{
+let o=pr[x.s];
+let price=o?'$'+o.p.toLocaleString():'Loading...';
+let ch=o?((o.ch>0?'+':'')+o.ch.toFixed(2)+'%'):'--';
+let col=o?(o.ch>=0?'text-green-400':'text-red-400'):'text-gray-400';
+h+=`<div class="glass rounded-xl p-3 flex justify-between items-center"><div class="flex gap-3 items-center"><div class="w-10 h-10 ${x.c} rounded-full flex items-center justify-center font-bold">${x.i}</div><div><p class="font-bold text-sm">${x.s}</p><p class="text-xs text-gray-400">${x.n}</p></div></div><div class="text-right"><p class="font-bold text-sm">${price}</p><p class="text-xs ${col}">${ch}</p></div></div>`;
+});
+document.getElementById('list').innerHTML=h;
+document.getElementById('list2').innerHTML=h;
+}
+function show(t){
+document.getElementById('c-wallet').classList.add('hidden');
+document.getElementById('c-markets').classList.add('hidden');
+document.getElementById('c-p2p').classList.add('hidden');
+document.getElementById('b-wallet').className='px-4 py-2 rounded-full glass text-sm';
+document.getElementById('b-markets').className='px-4 py-2 rounded-full glass text-sm';
+document.getElementById('b-p2p').className='px-4 py-2 rounded-full glass text-sm';
+document.getElementById('c-'+t).classList.remove('hidden');
+document.getElementById('b-'+t).className='px-4 py-2 rounded-full bg-yellow-400 text-black font-bold text-sm';
+}
+load();setInterval(load,15000);render();
+</script>
+</body>
+</html>
