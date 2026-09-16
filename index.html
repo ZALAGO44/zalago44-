@@ -1,85 +1,32 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZALAGO44 - Live Crypto Exchange</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ZALAGO44 V3 LIVE</title><script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
-body{font-family:'Space Grotesk',sans-serif;background:#0a0a0a;color:white}
-.glass{background:rgba(255,255,255,0.07);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1)}
-.live{animation:blink 1s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-</style>
-</head>
-<body>
-<header class="p-4 flex justify-between items-center border-b border-white/10 sticky top-0 bg-black/90 z-50">
-<div class="flex items-center gap-2"><div class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-black font-bold">Z</div><b>ZALAGO<span class="text-yellow-400">44</span></b><span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded-full"><span class="w-2 h-2 bg-green-400 rounded-full inline-block live"></span> LIVE</span></div>
-<button onclick="document.getElementById('dep').classList.remove('hidden');document.getElementById('dep').classList.add('flex')" class="bg-yellow-400 text-black px-4 py-2 rounded-full font-bold text-sm">Deposit</button>
-</header>
-
-<div class="p-4"><div class="glass rounded-2xl p-5"><p class="text-gray-400 text-sm">Total Balance (GHS)</p><h1 class="text-3xl font-bold mt-1">GH₵ 0.00</h1><div class="grid grid-cols-4 gap-3 mt-5 text-center text-xs">
-<button onclick="document.getElementById('dep').classList.remove('hidden');document.getElementById('dep').classList.add('flex')"><div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-black mx-auto"><i class="fas fa-arrow-down"></i></div>Deposit</button>
-<button onclick="alert('Withdraw - Coming V3')"><div class="w-12 h-12 glass rounded-full flex items-center justify-center mx-auto"><i class="fas fa-arrow-up"></i></div>Withdraw</button>
-<button onclick="show('p2p')"><div class="w-12 h-12 glass rounded-full flex items-center justify-center mx-auto"><i class="fas fa-users"></i></div>P2P</button>
-<button onclick="show('markets')"><div class="w-12 h-12 glass rounded-full flex items-center justify-center mx-auto"><i class="fas fa-chart-line"></i></div>Markets</button>
-</div></div></div>
-
-<div class="px-4 flex gap-2">
-<button id="b-wallet" onclick="show('wallet')" class="px-4 py-2 rounded-full bg-yellow-400 text-black font-bold text-sm">Wallet</button>
-<button id="b-markets" onclick="show('markets')" class="px-4 py-2 rounded-full glass text-sm">Markets</button>
-<button id="b-p2p" onclick="show('p2p')" class="px-4 py-2 rounded-full glass text-sm">P2P</button>
-</div>
-
-<div id="c-wallet" class="p-4 space-y-3"><div class="flex justify-between"><b>My Assets</b><span class="text-xs text-green-400">● Live Prices</span></div><div id="list" class="space-y-2"></div></div>
-<div id="c-markets" class="p-4 hidden"><b>Markets - Top Coins</b><div id="list2" class="space-y-2 mt-3"></div></div>
-<div id="c-p2p" class="p-4 hidden"><div class="glass rounded-2xl p-6 text-center"><i class="fas fa-users text-4xl text-yellow-400"></i><h3 class="font-bold text-lg mt-2">ZALAGO P2P</h3><p class="text-sm text-gray-400 mt-2">Buy & Sell USDT with GHS</p><div class="mt-4 space-y-2 text-sm text-left"><div class="flex justify-between glass p-3 rounded-xl"><span>Buy USDT</span><span class="text-green-400">GH₵ 16.20</span></div><div class="flex justify-between glass p-3 rounded-xl"><span>Sell USDT</span><span class="text-red-400">GH₵ 15.90</span></div></div><button class="mt-4 w-full bg-yellow-400 text-black py-3 rounded-full font-bold">Start Trading</button></div></div>
-
-<div id="dep" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4 z-50" onclick="this.classList.add('hidden')">
-<div class="bg-zinc-900 border border-white/10 rounded-2xl p-5 w-full max-w-sm" onclick="event.stopPropagation()">
-<div class="flex justify-between mb-4"><b>Deposit Crypto</b><button onclick="document.getElementById('dep').classList.add('hidden')" class="w-8 h-8 glass rounded-full"><i class="fas fa-times"></i></button></div>
-<div class="bg-white p-4 rounded-xl text-black text-center font-bold">ZALAGO44<br><span id="coinTxt">BTC</span> Deposit<br><span class="text-xs">Network: BEP20</span></div>
-<p class="text-xs mt-4 text-gray-400">Your <span id="coinTxt2">BTC</span> Address</p><div class="flex gap-2 mt-1"><input id="addr" readonly class="flex-1 bg-black border border-white/10 rounded-lg px-3 py-2 text-xs" value="0x44ZALAGO44BTC..."><button onclick="navigator.clipboard.writeText(document.getElementById('addr').value);alert('Copied!')" class="bg-yellow-400 text-black px-3 rounded-lg text-xs font-bold">Copy</button></div>
-<p class="text-[10px] text-gray-500 mt-3 text-center">Send only <span id="coinTxt3">BTC</span> on BNB Chain. Min $5</p>
-</div>
-</div>
-
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap');
+body{font-family:'Space Grotesk',sans-serif;background:#080808;color:white}
+.glass{background:rgba(255,255,255,.07);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1)}</style>
+</head><body>
+<header class="p-4 flex justify-between items-center border-b border-white/10 bg-black sticky top-0 z-40">
+<div class="flex gap-2 items-center"><div class="w-9 h-9 bg-yellow-400 rounded-xl flex items-center justify-center text-black font-bold">Z</div><b>ZALAGO<span class="text-yellow-400">44</span></b><span class="text-[10px] bg-green-500/20 text-green-400 px-2 py-1 rounded-full border border-green-500/30 ml-2">● LIVE V3</span></div>
+<button onclick="openD('BTC')" class="bg-yellow-400 text-black px-5 py-2 rounded-full font-bold text-sm">Deposit</button></header>
+<div class="p-4"><div class="glass rounded-[20px] p-5"><p class="text-gray-400 text-sm">Total Balance</p><h1 class="text-4xl font-bold">GH₵ 0.00</h1><p class="text-sm text-gray-400">$0.00 • 1 USD = 16.20 GHS</p>
+<div class="grid grid-cols-4 gap-3 mt-6 text-center text-[11px]"><button onclick="openD('BTC')"><div class="w-14 h-14 bg-yellow-400 rounded-full flex items-center justify-center text-black mx-auto"><i class="fas fa-arrow-down"></i></div><p class="mt-2">Deposit</p></button>
+<button onclick="alert('Withdraw: DM @ZALAGO44')"><div class="w-14 h-14 glass rounded-full flex items-center justify-center mx-auto"><i class="fas fa-arrow-up"></i></div><p class="mt-2">Withdraw</p></button>
+<button><div class="w-14 h-14 glass rounded-full flex items-center justify-center mx-auto"><i class="fas fa-users"></i></div><p class="mt-2">P2P</p></button>
+<button><div class="w-14 h-14 glass rounded-full flex items-center justify-center mx-auto"><i class="fas fa-chart-line"></i></div><p class="mt-2">Markets</p></button></div></div></div>
+<div id="list" class="p-4 space-y-3"></div>
+<div id="dep" class="fixed inset-0 bg-black/85 backdrop-blur hidden items-center justify-center p-4 z-50" onclick="closeD()"><div class="bg-[#111] border border-white/10 rounded-[20px] p-5 w-full max-w-sm" onclick="event.stopPropagation()">
+<div class="flex justify-between"><b id="dN">BTC Deposit</b><button onclick="closeD()" class="w-8 h-8 glass rounded-full"><i class="fas fa-times text-xs"></i></button></div>
+<div class="bg-white rounded-2xl p-4 flex justify-center mt-4"><img id="qr" src="" class="w-48 h-48"></div>
+<p class="text-xs mt-4 text-gray-400">Your <span id="c1">BTC</span> Address (BEP20)</p>
+<div class="flex gap-2 mt-2"><input id="ad" readonly class="flex-1 bg-black border border-white/10 rounded-xl px-3 py-3 text-xs"><button onclick="navigator.clipboard.writeText(document.getElementById('ad').value);alert('Copied!')" class="bg-yellow-400 text-black px-4 rounded-xl text-xs font-bold">Copy</button></div>
+<button onclick="alert('Detected! Will credit after 1 confirmation')" class="mt-4 w-full bg-yellow-400 text-black py-3 rounded-full font-bold">I have sent it</button></div></div>
 <script>
-const coins=[{id:'bitcoin',s:'BTC',n:'Bitcoin',c:'bg-orange-500',i:'₿'},{id:'ethereum',s:'ETH',n:'Ethereum',c:'bg-blue-500',i:'Ξ'},{id:'binancecoin',s:'BNB',n:'BNB',c:'bg-yellow-500',i:'B'},{id:'solana',s:'SOL',n:'Solana',c:'bg-purple-500',i:'S'},{id:'tether',s:'USDT',n:'Tether',c:'bg-green-500',i:'$'},{id:'usd-coin',s:'USDC',n:'USDC',c:'bg-blue-400',i:'$'}];
-let pr={};
-async function load(){
-try{
-const ids=coins.map(x=>x.id).join(',');
-const r=await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`);
-const d=await r.json();
-coins.forEach(x=>{if(d[x.id])pr[x.s]={p:d[x.id].usd,ch:d[x.id].usd_24h_change}});
-render();
-}catch(e){}
-}
-function render(){
-let h='';
-coins.forEach(x=>{
-let o=pr[x.s];
-let price=o?'$'+o.p.toLocaleString():'Loading...';
-let ch=o?((o.ch>0?'+':'')+o.ch.toFixed(2)+'%'):'--';
-let col=o?(o.ch>=0?'text-green-400':'text-red-400'):'text-gray-400';
-h+=`<div class="glass rounded-xl p-3 flex justify-between items-center"><div class="flex gap-3 items-center"><div class="w-10 h-10 ${x.c} rounded-full flex items-center justify-center font-bold">${x.i}</div><div><p class="font-bold text-sm">${x.s}</p><p class="text-xs text-gray-400">${x.n}</p></div></div><div class="text-right"><p class="font-bold text-sm">${price}</p><p class="text-xs ${col}">${ch}</p></div></div>`;
-});
-document.getElementById('list').innerHTML=h;
-document.getElementById('list2').innerHTML=h;
-}
-function show(t){
-document.getElementById('c-wallet').classList.add('hidden');
-document.getElementById('c-markets').classList.add('hidden');
-document.getElementById('c-p2p').classList.add('hidden');
-document.getElementById('b-wallet').className='px-4 py-2 rounded-full glass text-sm';
-document.getElementById('b-markets').className='px-4 py-2 rounded-full glass text-sm';
-document.getElementById('b-p2p').className='px-4 py-2 rounded-full glass text-sm';
-document.getElementById('c-'+t).classList.remove('hidden');
-document.getElementById('b-'+t).className='px-4 py-2 rounded-full bg-yellow-400 text-black font-bold text-sm';
-}
-load();setInterval(load,15000);render();
-</script>
-</body>
-</html>
+const WAL={BTC:"0x44ZALAGO44BTCDEMO12345BEP20",ETH:"0x44ZALAGO44ETHDEMO67890BEP20",BNB:"0x44ZALAGO44BNBDEMO11111BEP20",SOL:"ZALAGO44SoLDeMo22222",USDT:"0x44ZALAGO44USDTDEMO33333BEP20",USDC:"0x44ZALAGO44USDCDEMO44444BEP20",TRX:"T9ZALAGO44TRXDEMO55555",ADA:"addr1zalago44ada66666"};
+const coins=[{id:'bitcoin',s:'BTC',n:'Bitcoin',c:'bg-orange-500',i:'₿'},{id:'ethereum',s:'ETH',n:'Ethereum',c:'bg-blue-500',i:'Ξ'},{id:'binancecoin',s:'BNB',n:'BNB',c:'bg-yellow-500',i:'B'},{id:'solana',s:'SOL',n:'Solana',c:'bg-purple-500',i:'S'},{id:'tether',s:'USDT',n:'Tether',c:'bg-green-500',i:'$'},{id:'usd-coin',s:'USDC',n:'USDC',c:'bg-blue-400',i:'$'},{id:'tron',s:'TRX',n:'TRON',c:'bg-red-500',i:'T'},{id:'cardano',s:'ADA',n:'Cardano',c:'bg-blue-600',i:'A'}];
+let pr={};async function load(){try{const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids='+coins.map(x=>x.id).join(',')+'&vs_currencies=usd&include_24hr_change=true');const d=await r.json();coins.forEach(x=>{if(d[x.id])pr[x.s]={p:d[x.id].usd,ch:d[x.id].usd_24h_change}});render()}catch(e){}}
+function render(){let h='';coins.forEach(x=>{let o=pr[x.s];let price=o?'$'+o.p.toLocaleString():'...';let ghs=o?'GH₵'+(o.p*16.2).toFixed(2):'';let ch=o?(o.ch>0?'+':'')+o.ch.toFixed(2)+'%':'--';let col=o?(o.ch>=0?'text-green-400':'text-red-400'):'text-gray-400';h+=`<div onclick="openD('${x.s}')" class="glass rounded-2xl p-4 flex justify-between items-center"><div class="flex gap-3 items-center"><div class="w-11 h-11 ${x.c} rounded-full flex items-center justify-center font-bold">${x.i}</div><div><p class="font-bold text-sm">${x.s}</p><p class="text-xs text-gray-400">${ghs}</p></div></div><div class="text-right"><p class="font-bold text-sm">${price}</p><p class="text-xs ${col}">${ch}</p><p class="text-[10px] mt-1 bg-white/10 px-2 py-1 rounded-full">Tap to Deposit</p></div></div>`});document.getElementById('list').innerHTML=h}
+function openD(s){document.getElementById('dN').innerText=s+' Deposit';document.getElementById('c1').innerText=s;let a=WAL[s]||WAL['BTC'];document.getElementById('ad').value=a;document.getElementById('qr').src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+a;document.getElementById('dep').classList.remove('hidden');document.getElementById('dep').classList.add('flex')}
+function closeD(){document.getElementById('dep').classList.add('hidden');document.getElementById('dep').classList.remove('flex')}
+load();setInterval(load,15000);
+</script></body></html>
