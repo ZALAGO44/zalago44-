@@ -1,1 +1,53 @@
-https://raw.githubusercontent.com
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZALAGO44 PRO</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#fff;font-family:system-ui}
+.hd{position:sticky;top:0;background:#111;display:flex;justify-content:space-between;padding:12px;border-bottom:1px solid #222}
+.z{width:36px;height:36px;background:#f5c518;border-radius:10px;display:grid;place-items:center;color:#000;font-weight:900}
+.btn{padding:10px 18px;border-radius:30px;border:0;font-weight:800}
+.y{background:#f5c518;color:#000}
+.tab{padding:10px 16px;border-radius:30px;background:#1e1e1e;border:1px solid #333;color:#fff}
+.tab.a{background:#f5c518;color:#000;font-weight:800}
+.card{background:#141414;border:1px solid #222;border-radius:16px;padding:14px;margin:10px}
+</style>
+</head>
+<body>
+<div class="hd">
+<div id="zLogo" style="display:flex;gap:8px;align-items:center;font-weight:900"><div class="z">Z</div>ZALAGO44 PRO P2P</div>
+<button class="btn y">Login</button>
+</div>
+<div style="display:flex;gap:8px;padding:12px">
+<button class="tab a">P2P Market</button>
+<button class="tab">Wallet</button>
+</div>
+<div style="margin:10px;padding:12px;background:#f5c51820;border:1px solid #f5c51840;border-radius:14px">
+💡 How: Buyer pays MoMo → USDT locked TJ2V...Brx → 2% fee to you! CEO: Tap Z 5x
+</div>
+<div id="offers" class="card" style="text-align:center;color:#666">
+No offers yet<br><br>
+<button class="btn y">💰 BUY USDT NOW</button>
+</div>
+<script>
+let t=0;
+document.getElementById('zLogo').onclick=()=>{
+t++;
+setTimeout(()=>t=0,2000);
+if(t>=5){
+let p=prompt('CEO Password?');
+if((p||'').trim()==='1234'||(p||'').trim()==='ZALAGO44ADMIN'){alert('CEO OK 👑 Welcome Boss!');}else{alert('Wrong! Use 1234');}
+}
+};
+if(location.search.includes('admin')){
+setTimeout(()=>{
+let p=prompt('CEO Password?');
+if((p||'').trim()==='1234')alert('CEO OK 👑');
+},600);
+}
+</script>
+</body>
+</html>
