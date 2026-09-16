@@ -1,4 +1,55 @@
-<!DOCTYPE html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZALAGO44 PRO P2P</title><style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#0a0a0a;color:#fff;font-family:system-ui}
+.hd{position:sticky;top:0;z-index:99;background:#111;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #222}
+.logo{display:flex;align-items:center;gap:8px;font-weight:900;cursor:pointer}.z{width:36px;height:36px;background:#f5c518;border-radius:10px;display:grid;place-items:center;color:#000;font-weight:900}
+.badge{background:#f5c518;color:#000;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:800}
+.btn{padding:10px 18px;border-radius:30px;border:0;font-weight:800;cursor:pointer}.y{background:#f5c518;color:#000}.blk{background:#1a1a1a;color:#fff;border:1px solid #333}
+.tabs{display:flex;gap:8px;padding:12px;overflow:auto}.tab{padding:10px 16px;border-radius:30px;background:#1e1e1e;border:1px solid #333;white-space:nowrap}
+.tab.a{background:#f5c518;color:#000;font-weight:800}#adminTab{display:none!important}
+.card{background:#141414;border:1px solid #222;border-radius:16px;padding:14px;margin:10px}
+.inp{width:100%;padding:12px;background:#0f0f0f;border:1px solid #333;border-radius:10px;color:#fff;margin:6px 0}
+.how{background:linear-gradient(135deg,#f5c51820,#f5c51805);border:1px solid #f5c51840;border-radius:14px;padding:12px;margin:10px}
+.offer{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:14px;padding:12px;margin:10px}
+</style></head><body>
+<div class="hd">
+<div class="logo" id="zLogo"><div class="z">Z</div><div>ZALAGO44 PRO <span class="badge">P2P</span></div></div>
+<button class="btn y" id="loginBtn" onclick="login()">Login</button>
+</div>
+
+<div class="tabs">
+<button class="tab a" onclick="show('market')" id="mTab">🟢 P2P Market</button>
+<button class="tab" onclick="show('wallet')" id="wTab">Wallet</button>
+<button class="tab" id="adminTab" onclick="show('admin')">Admin</button>
+</div>
+
+<div id="market">
+<div class="how">💡 <b>How P2P Works:</b> Buyer pays via MoMo → USDT locked in escrow <b>TJ2VsW3c7aWq4p6eR8tY9uI0oP1aS2dF3gH4jK5lBrx</b> → Seller confirms → 2% fee to you. Secret CEO!</div>
+<div style="padding:0 10px;display:flex;gap:8px;align-items:center;justify-content:space-between">
+<h3>Buy / Sell Offers</h3><button class="btn y" onclick="createOffer()">+ Create Offer</button>
+</div>
+<div id="offers"></div>
+</div>
+
+<div id="wallet" style="display:none">
+<div class="card"><h3>Wallet</h3><p style="color:#888">Escrow: TJ2V...Brx</p><button class="btn y" onclick="alert('Connect wallet later')">Connect</button></div>
+</div>
+
+<div id="admin" style="display:none">
+<div class="card"><h2>👑 CEO DASHBOARD</h2><p>Password: 1234</p><div>Profit: <b id="profit">GH₵0</b></div><div id="adminOffers"></div></div>
+</div>
+
+<script>
+let tap=0,offers=JSON.parse(localStorage.getItem('z_offers')||'[]');
+document.getElementById('zLogo').onclick=()=>{tap++;setTimeout(()=>tap=0,2000);if(tap>=5)openCEO()};
+function openCEO(){let p=prompt('CEO ONLY - Password?');if(!p)return;if(p.trim()==='1234'||p.trim()==='ZALAGO44ADMIN'){document.getElementById('admin').style.display='block';document.getElementById('market').style.display='none';document.getElementById('wallet').style.display='none';alert('Welcome Boss 👑');}else alert('Wrong! Use 1234');}
+if(location.search.includes('admin'))setTimeout(openCEO,500);
+function show(t){document.getElementById('market').style.display=t==='market'?'block':'none';document.getElementById('wallet').style.display=t==='wallet'?'block':'none';document.getElementById('admin').style.display=t==='admin'?'block':'none';document.getElementById('mTab').className=t==='market'?'tab a':'tab';document.getElementById('wTab').className=t==='wallet'?'tab a':'tab';}
+function createOffer(){let a=prompt('USDT amount?'),pr=prompt('Price per USDT GH₵?');if(!a||!pr)return;offers.push({id:Date.now(),amount:a,price:pr});localStorage.setItem('z_offers',JSON.stringify(offers));render();}
+function render(){let h='';if(offers.length==0)h='<div class=card style=text-align:center;color:#666> No offers yet - Tap + Create Offer<br><br><button class=btn y onclick=createOffer()>💰 BUY USDT NOW - TRADE HERE</button></div>';else offers.forEach(o=>{h+=`<div class=offer><b>${o.amount} USDT</b> @ GH₵${o.price}<br><button class=btn y style=margin-top:8px onclick="alert('Buyer must pay to TJ2V...Brx')">Buy Now</button></div>`});document.getElementById('offers').innerHTML=h;document.getElementById('adminOffers').innerHTML=h;}
+function login(){alert('Login: Use wallet connect later - P2P works now!');}
+render();
+</script>
+</body></html><!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ZALAGO44 PRO P2P</title><script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
