@@ -11,24 +11,20 @@ body{background:#0B0E11;color:#fff;font-family:Arial}
 .binance-yellow{background:#FCD535;color:#000}
 .card{background:#1E2329}
 .card2{background:#2B3139}
-.border-binance{border-color:#2B3139}
 </style>
 </head>
 <body class="pb-20">
 
-<!-- REGISTER PAGE - YOUR SCREENSHOT -->
 <div id="auth">
 <div class="flex flex-col items-center pt-10 px-6">
 <div class="w-20 h-20 binance-yellow rounded-2xl flex items-center justify-center text-4xl font-black">Z</div>
 <h1 class="text-3xl font-black mt-3">ZALAGO44</h1>
 <p class="text-gray-500 text-sm">Ghana's #1 Trading Platform</p>
-
 <div class="w-full max-w-md mt-6">
 <div class="flex bg-[#1E2329] rounded-xl p-1">
 <button id="b1" onclick="tab('email')" class="flex-1 py-3 rounded-lg bg-white text-black font-bold">Email</button>
 <button id="b2" onclick="tab('phone')" class="flex-1 py-3 rounded-lg text-gray-400 font-bold">Phone</button>
 </div>
-
 <div class="mt-5 space-y-3">
 <input id="e" class="w-full p-4 rounded-xl bg-[#2B3139] border border-[#474D57] outline-none" value="vifahasiwome@gmail.com">
 <div class="flex gap-2"><input placeholder="Verification code" class="flex-1 p-4 rounded-xl bg-[#2B3139] border border-[#474D57] outline-none"><button class="binance-yellow px-7 rounded-xl font-bold">Send</button></div>
@@ -41,21 +37,16 @@ body{background:#0B0E11;color:#fff;font-family:Arial}
 </div>
 </div>
 
-<!-- BINANCE FULL APP INSIDE -->
 <div id="app" class="hidden">
-<!-- Header like Binance -->
 <div class="sticky top-0 z-50 bg-[#181A20] p-3 flex justify-between items-center border-b border-[#2B3139]">
 <div class="flex items-center gap-3">
 <div class="w-8 h-8 binance-yellow rounded flex items-center justify-center font-black">Z</div>
 <span class="font-bold text-[#FCD535]">ZALAGO44</span>
-<div class="hidden md:flex gap-4 ml-6 text-sm text-gray-400"><span class="text-white">Buy Crypto</span><span>Markets</span><span>Trade</span><span>Futures</span><span>Earn</span><span class="text-white bg-[#2B3139] px-2 rounded">P2P</span></div>
 </div>
 <div class="flex gap-3"><i class="fa-solid fa-magnifying-glass text-gray-400"></i><i class="fa-regular fa-bell"></i><div class="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center text-xs">GH</div></div>
 </div>
 
-<!-- Pages -->
 <div id="page-home">
-<!-- Balance like Binance -->
 <div class="p-4 bg-[#1E2329] m-3 rounded-xl">
 <div class="flex justify-between"><span class="text-gray-400 text-xs">Total Value (GHS) <i class="fa-regular fa-eye"></i></span><span class="text-xs text-gray-400">P2P Orders</span></div>
 <h1 class="text-2xl font-bold mt-1">19,007.60 <span class="text-sm font-normal text-gray-400">GHS ≈ 1,250.50 USDT</span></h1>
@@ -63,78 +54,122 @@ body{background:#0B0E11;color:#fff;font-family:Arial}
 <button class="card2 py-3 rounded-lg text-xs"><div class="text-green-400"><i class="fa-solid fa-arrow-down"></i></div>Deposit</button>
 <button class="card2 py-3 rounded-lg text-xs"><div class="text-red-400"><i class="fa-solid fa-arrow-up"></i></div>Withdraw</button>
 <button class="card2 py-3 rounded-lg text-xs"><div class="text-yellow-400"><i class="fa-solid fa-repeat"></i></div>Transfer</button>
-<button class="card2 py-3 rounded-lg text-xs"><div class="text-blue-400"><i class="fa-solid fa-chart-line"></i></div>P2P</button>
+<button onclick="showPage('p2p')" class="card2 py-3 rounded-lg text-xs"><div class="text-blue-400"><i class="fa-solid fa-chart-line"></i></div>P2P</button>
 </div>
 </div>
-
-<!-- Markets Tabs like Binance -->
 <div class="px-3">
-<div class="flex gap-4 text-sm border-b border-[#2B3139] py-2"><span class="text-white border-b-2 border-[#FCD535] pb-2">Favorites</span><span class="text-gray-500">Spot</span><span class="text-gray-500">Futures</span><span class="text-gray-500">New</span><span class="text-gray-500">Gainers</span></div>
-
+<div class="flex gap-4 text-sm border-b border-[#2B3139] py-2"><span class="text-white border-b-2 border-[#FCD535] pb-2">Favorites</span><span class="text-gray-500">Spot</span><span class="text-gray-500">Futures</span><span class="text-gray-500">New</span></div>
 <div id="markets"></div>
-
-<!-- Earn Banner like Binance -->
-<div class="card p-3 rounded-xl mt-4 flex justify-between items-center">
-<div><p class="font-bold text-sm">Simple Earn</p><p class="text-xs text-gray-400">Up to 10% APR on USDT</p></div>
-<button class="binance-yellow px-4 py-1 rounded text-xs font-bold">Subscribe</button>
-</div>
 </div>
 </div>
 
 <div id="page-trade" class="hidden">
-<!-- TradingView Chart + Orderbook like Binance Spot -->
 <div class="grid grid-cols-3 bg-[#181A20] text-xs">
 <div class="col-span-2 border-r border-[#2B3139]">
 <div class="p-2 flex gap-3 font-bold"><span>BTC/USDT</span><span class="text-green-400">68,420.50</span><span class="text-green-400">+2.34%</span></div>
-<div class="h-48 bg-[#0B0E11] flex items-center justify-center relative">
-<canvas id="chart" class="w-full h-full"></canvas>
-<div class="absolute bottom-2 left-2 text-[10px] text-gray-500">TradingView Chart - ZALAGO44</div>
-</div>
-<!-- Buy Sell like Binance -->
+<div class="h-48 bg-[#0B0E11] flex items-center justify-center relative"><canvas id="chart" class="w-full h-full"></canvas></div>
 <div class="p-3 grid grid-cols-2 gap-3">
-<div>
-<p class="text-gray-500 text-[11px] mb-2">Buy BTC</p>
-<input placeholder="Price USDT" value="68420.5" class="w-full p-2 bg-[#2B3139] rounded text-sm mb-2">
-<input placeholder="Amount BTC" class="w-full p-2 bg-[#2B3139] rounded text-sm mb-2">
-<div class="grid grid-cols-4 gap-1 mb-2"><button class="card2 py-1 text-[10px]">25%</button><button class="card2 py-1 text-[10px]">50%</button><button class="card2 py-1 text-[10px]">75%</button><button class="card2 py-1 text-[10px]">100%</button></div>
-<button class="w-full bg-green-500 py-2 rounded font-bold text-sm">Buy BTC</button>
-</div>
-<div>
-<p class="text-gray-500 text-[11px] mb-2">Sell BTC</p>
-<input placeholder="Price USDT" value="68420.5" class="w-full p-2 bg-[#2B3139] rounded text-sm mb-2">
-<input placeholder="Amount BTC" class="w-full p-2 bg-[#2B3139] rounded text-sm mb-2">
-<div class="grid grid-cols-4 gap-1 mb-2"><button class="card2 py-1 text-[10px]">25%</button><button class="card2 py-1 text-[10px]">50%</button><button class="card2 py-1 text-[10px]">75%</button><button class="card2 py-1 text-[10px]">100%</button></div>
-<button class="w-full bg-red-500 py-2 rounded font-bold text-sm">Sell BTC</button>
+<div><input placeholder="Price USDT" value="68420.5" class="w-full p-2 bg-[#2B3139] rounded text-sm mb-2"><input placeholder="Amount BTC" class="w-full p-2 bg-[#2B3139] rounded text-sm mb-2"><button class="w-full bg-green-500 py-2 rounded font-bold text-sm">Buy BTC</button></div>
+<div><input placeholder="Price USDT" value="68420.5" class="w-full p-2 bg-[#2B3139] rounded text-sm mb-2"><input placeholder="Amount BTC" class="w-full p-2 bg-[#2B3139] rounded text-sm mb-2"><button class="w-full bg-red-500 py-2 rounded font-bold text-sm">Sell BTC</button></div>
 </div>
 </div>
-</div>
-<div class="p-2">
-<p class="font-bold text-[11px] mb-2">Order Book</p>
-<div id="orderbook" class="text-[11px] space-y-1"></div>
-<p class="font-bold text-[11px] mt-4 mb-2">Trades</p>
-<div class="text-[10px] text-gray-400 space-y-1"><div class="flex justify-between"><span class="text-green-400">68,420.50</span><span>0.002 BTC</span><span>12:54:10</span></div><div class="flex justify-between"><span class="text-red-400">68,419.20</span><span>0.15 BTC</span><span>12:54:08</span></div></div>
-</div>
+<div class="p-2"><p class="font-bold text-[11px] mb-2">Order Book</p><div id="orderbook" class="text-[11px] space-y-1"></div></div>
 </div>
 </div>
 
 <div id="page-p2p" class="hidden p-3">
-<div class="flex gap-2 mb-3"><button class="binance-yellow px-4 py-1.5 rounded-full text-xs font-bold">Buy</button><button class="card2 px-4 py-1.5 rounded-full text-xs">Sell</button><button class="card2 px-4 py-1.5 rounded-full text-xs">USDT</button><button class="card2 px-4 py-1.5 rounded-full text-xs">BTC</button><button class="card2 px-4 py-1.5 rounded-full text-xs">GHS</button></div>
+<div class="flex gap-2 mb-3"><button class="binance-yellow px-4 py-1.5 rounded-full text-xs font-bold">Buy</button><button class="card2 px-4 py-1.5 rounded-full text-xs">Sell</button><button class="card2 px-4 py-1.5 rounded-full text-xs">USDT</button><button class="card2 px-4 py-1.5 rounded-full text-xs">BTC</button></div>
 <div id="p2p"></div>
-<div class="card p-3 rounded-xl mt-4 border border-yellow-500">
-<p class="text-yellow-400 font-bold text-xs"><i class="fa-solid fa-crown"></i> OWNER PROFIT BOSS: 2% fee on every P2P trade goes to your wallet automatically!</p>
-<p class="text-[11px] text-gray-400 mt-1">If 100 users trade 1000 GHS daily, you make 2000 GHS daily!</p>
-</div>
 </div>
 
-<div id="page-wallet" class="hidden p-3">
-<h2 class="font-bold mb-3">My Assets - Binance Style</h2>
+<!-- WALLET / MY ASSETS PAGE WITH ALL YOUR REQUESTS -->
+<div id="page-wallet" class="hidden p-3 pb-32">
+<h2 class="font-bold mb-3 text-lg">My Assets</h2>
 <div class="card p-3 rounded-xl border-l-4 border-green-500 mb-2"><p class="text-xs text-gray-400">Spot Wallet</p><p class="font-bold">1,250.50 USDT ≈ 19,007.60 GHS</p></div>
-<div class="card p-3 rounded-xl border-l-4 border-orange-500 mb-2"><p class="text-xs text-gray-400">Funding Wallet (P2P)</p><p class="font-bold">500.00 USDT</p></div>
-<div class="card p-3 rounded-xl border-l-4 border-yellow-500 mb-2"><p class="text-xs text-gray-400">OWNER PROFIT WALLET (Your 2% fees)</p><p class="font-bold text-yellow-400">45.20 USDT - Your Profit Boss!</p></div>
-<div class="grid grid-cols-2 gap-2 mt-4"><button class="bg-green-500 py-3 rounded-xl font-bold">Deposit Crypto</button><button class="bg-[#2B3139] py-3 rounded-xl font-bold">Withdraw</button></div>
+<div class="card p-3 rounded-xl border-l-4 border-yellow-500 mb-4"><p class="text-xs text-gray-400">OWNER PROFIT WALLET (Your 2% fees)</p><p class="font-bold text-yellow-400">45.20 USDT - Your Profit Boss!</p></div>
+
+<!-- 1. KYC GHANA CARD -->
+<div class="card p-4 rounded-xl mb-3">
+<div class="flex justify-between items-center mb-3"><h3 class="font-bold"><i class="fa-solid fa-id-card text-yellow-400"></i> KYC Verification - Ghana Card</h3><span class="text-xs bg-red-900 text-red-400 px-2 py-1 rounded">Not Verified</span></div>
+<p class="text-xs text-gray-400 mb-3">Verify your Ghana Card to trade. Take clear pictures.</p>
+
+<div class="space-y-3">
+<div>
+<p class="text-xs text-gray-400 mb-1">Ghana Card Front</p>
+<label class="w-full card2 border border-dashed border-gray-600 rounded-xl p-4 flex flex-col items-center cursor-pointer">
+<i class="fa-solid fa-camera text-xl text-gray-500"></i><span class="text-xs mt-1 text-gray-400">Tap to take picture - Front</span>
+<input type="file" accept="image/*" class="hidden" onchange="previewImg(this,'frontPreview')">
+<img id="frontPreview" class="hidden w-full h-24 object-cover rounded mt-2">
+</label>
+</div>
+<div>
+<p class="text-xs text-gray-400 mb-1">Ghana Card Back</p>
+<label class="w-full card2 border border-dashed border-gray-600 rounded-xl p-4 flex flex-col items-center cursor-pointer">
+<i class="fa-solid fa-camera text-xl text-gray-500"></i><span class="text-xs mt-1 text-gray-400">Tap to take picture - Back</span>
+<input type="file" accept="image/*" class="hidden" onchange="previewImg(this,'backPreview')">
+<img id="backPreview" class="hidden w-full h-24 object-cover rounded mt-2">
+</label>
+</div>
+<div>
+<p class="text-xs text-gray-400 mb-1">Selfie Holding Ghana Card</p>
+<label class="w-full card2 border border-dashed border-yellow-600 rounded-xl p-4 flex flex-col items-center cursor-pointer">
+<i class="fa-solid fa-user-camera text-xl text-yellow-400"></i><span class="text-xs mt-1 text-yellow-400 font-bold">Picture of yourself holding Ghana Card</span>
+<input type="file" accept="image/*" class="hidden" onchange="previewImg(this,'selfiePreview')">
+<img id="selfiePreview" class="hidden w-full h-32 object-cover rounded mt-2">
+</label>
+</div>
+<button onclick="submitKYC()" class="w-full binance-yellow py-3 rounded-xl font-bold mt-2">Submit Ghana Card Verification</button>
+<p class="text-[10px] text-gray-500 mt-2 text-center">Owner will verify within 5 minutes</p>
+</div>
 </div>
 
-<!-- Bottom Nav - Like Binance App -->
+<!-- 2. INVITE FRIENDS -->
+<div class="card p-4 rounded-xl mb-3 bg-gradient-to-br from-[#1E2329] to-[#2B3139]">
+<h3 class="font-bold mb-2"><i class="fa-solid fa-user-plus text-yellow-400"></i> Invite Friends - Earn Money!</h3>
+<p class="text-xs text-gray-400 mb-3">Share your link, when friend registers & trades, you earn 10% of owner fee!</p>
+<div class="card2 p-3 rounded-lg flex justify-between items-center mb-3">
+<span class="text-xs">Your Referral Code: <b class="text-yellow-400 text-sm">VAA</b></span>
+<button onclick="copyRef()" class="text-xs bg-white text-black px-3 py-1 rounded font-bold">Copy</button>
+</div>
+<div class="card2 p-2 rounded-lg text-[11px] text-gray-400 mb-3 break-all" id="refLink">https://zalago44.github.io/?ref=VAA</div>
+<div class="grid grid-cols-2 gap-2">
+<button onclick="shareWhatsApp()" class="bg-green-600 py-2.5 rounded-lg font-bold text-xs"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+<button onclick="shareAll()" class="binance-yellow py-2.5 rounded-lg font-bold text-xs"><i class="fa-solid fa-share"></i> Share Link</button>
+</div>
+<div class="flex justify-between mt-3 text-xs"><span class="text-gray-400">Friends Invited: 12</span><span class="text-yellow-400 font-bold">Earned: 8.50 USDT</span></div>
+</div>
+
+<!-- 3. DOWNLOAD APP -->
+<div class="card p-4 rounded-xl mb-3">
+<h3 class="font-bold mb-2"><i class="fa-solid fa-mobile-screen text-yellow-400"></i> Download ZALAGO44 App</h3>
+<p class="text-xs text-gray-400 mb-3">Trade faster on mobile app</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="card2 py-3 rounded-xl text-xs font-bold border border-gray-700"><i class="fa-brands fa-google-play"></i> Android APK<br><span class="text-[10px] text-gray-400">Download</span></button>
+<button class="card2 py-3 rounded-xl text-xs font-bold border border-gray-700"><i class="fa-brands fa-apple"></i> iOS App<br><span class="text-[10px] text-gray-400">Coming Soon</span></button>
+</div>
+<button onclick="alert('App download started Boss!')" class="w-full mt-3 card2 py-2 rounded-lg text-xs"><i class="fa-solid fa-download"></i> Download APK Direct (2.5 MB)</button>
+</div>
+
+<!-- 4. CUSTOMER CARE -->
+<div class="card p-4 rounded-xl border border-yellow-500">
+<h3 class="font-bold mb-2"><i class="fa-solid fa-headset text-yellow-400"></i> Customer Care - Chat With Owner</h3>
+<p class="text-xs text-gray-400 mb-3">You (Owner) will chat directly with users. Tap to open chat!</p>
+<button onclick="openChat()" class="w-full binance-yellow py-3 rounded-xl font-bold"><i class="fa-solid fa-comments"></i> Chat With Owner (You) - Online 🟢</button>
+<p class="text-[10px] text-center text-gray-500 mt-2">Average reply: 2 minutes - You are the support Boss!</p>
+</div>
+</div>
+
+<!-- Customer Care Chat Modal -->
+<div id="chatModal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[100] flex flex-col">
+<div class="bg-[#1E2329] p-4 flex justify-between items-center"><div><p class="font-bold"><i class="fa-solid fa-crown text-yellow-400"></i> ZALAGO44 Owner - Customer Care</p><p class="text-xs text-green-400">● Online - You (Owner)</p></div><button onclick="closeChat()" class="text-xl">✕</button></div>
+<div class="flex-1 p-3 space-y-2 overflow-y-auto bg-[#0B0E11]" id="chatBox">
+<div class="card2 p-2 rounded-lg text-xs max-w-[80%]">Hello! Welcome to ZALAGO44 👋 How can I help you? I am the Owner.</div>
+</div>
+<div class="p-3 bg-[#1E2329] flex gap-2"><input id="chatInput" placeholder="Type message to Owner..." class="flex-1 p-3 rounded-full bg-[#2B3139] outline-none text-sm"><button onclick="sendChat()" class="binance-yellow w-12 h-12 rounded-full"><i class="fa-solid fa-paper-plane"></i></button></div>
+<div class="p-2 bg-[#1E2329] text-center"><a href="https://wa.me/233XXXXXXXX?text=Hello ZALAGO44 Owner" class="text-xs bg-green-600 px-4 py-2 rounded-full font-bold"><i class="fa-brands fa-whatsapp"></i> Or Chat on WhatsApp Direct</a></div>
+</div>
+
+<!-- Bottom Nav -->
 <div class="fixed bottom-0 left-0 right-0 bg-[#181A20] border-t border-[#2B3139] flex justify-around py-2 text-[10px]">
 <button onclick="showPage('home')" id="nav-home" class="text-[#FCD535] flex flex-col items-center"><i class="fa-solid fa-house text-sm"></i>Home</button>
 <button onclick="showPage('trade')" id="nav-trade" class="text-gray-500 flex flex-col items-center"><i class="fa-solid fa-chart-column text-sm"></i>Trade</button>
@@ -142,7 +177,6 @@ body{background:#0B0E11;color:#fff;font-family:Arial}
 <button onclick="showPage('p2p')" id="nav-p2p" class="text-gray-500 flex flex-col items-center"><i class="fa-solid fa-users text-sm"></i>P2P</button>
 <button onclick="showPage('wallet')" id="nav-wallet" class="text-gray-500 flex flex-col items-center"><i class="fa-solid fa-wallet text-sm"></i>Assets</button>
 </div>
-
 </div>
 
 <script>
@@ -151,11 +185,7 @@ function tab(t){
  document.getElementById('b2').className=t=='phone'?'flex-1 py-3 rounded-lg bg-white text-black font-bold':'flex-1 py-3 rounded-lg text-gray-400 font-bold';
  document.getElementById('e').style.display=t=='email'?'block':'none';
 }
-function goApp(){
- document.getElementById('auth').classList.add('hidden');
- document.getElementById('app').classList.remove('hidden');
- loadAll();
-}
+function goApp(){document.getElementById('auth').classList.add('hidden');document.getElementById('app').classList.remove('hidden');loadAll();}
 function showPage(p){
  ['home','trade','p2p','wallet'].forEach(x=>{
   document.getElementById('page-'+x).classList.add('hidden');
@@ -166,44 +196,31 @@ function showPage(p){
  document.getElementById('nav-'+p).classList.add('text-[#FCD535]');
 }
 function loadAll(){
- const mkts=[
-  {s:'BTC/USDT',pr:'68,420.50',ch:'+2.34%',up:true,v:'$2.1B'},
-  {s:'ETH/USDT',pr:'3,240.10',ch:'-1.12%',up:false,v:'$890M'},
-  {s:'BNB/USDT',pr:'620.40',ch:'+5.10%',up:true,v:'$420M'},
-  {s:'SOL/USDT',pr:'145.20',ch:'+8.30%',up:true,v:'$1.1B'},
-  {s:'USDT/GHS',pr:'15.20',ch:'+0.05%',up:true,v:'GHS 5M'},
- ];
- document.getElementById('markets').innerHTML=mkts.map(m=>`<div class="flex justify-between py-3 border-b border-[#1E2329]"><div><p class="font-bold text-sm">${m.s} <span class="text-[10px] text-gray-500">Vol ${m.v}</span></p><p class="text-[11px] text-gray-500">${m.s.split('/')[0]}</p></div><div class="text-right"><p class="font-bold text-sm">${m.pr}</p><p class="text-xs px-2 py-0.5 rounded ${m.up?'bg-green-900 text-green-400':'bg-red-900 text-red-400'}">${m.ch}</p></div></div>`).join('');
-
- document.getElementById('orderbook').innerHTML=`
-  ${[68425,68424,68423,68422,68421].map(p=>`<div class="flex justify-between text-red-400"><span>${p.toFixed(2)}</span><span class="text-white">0.${Math.floor(Math.random()*9)}5</span></div>`).join('')}
-  <div class="text-green-400 font-bold py-1">68,420.50 <i class="fa-solid fa-arrow-up text-[10px]"></i></div>
-  ${[68420,68419,68418,68417,68416].map(p=>`<div class="flex justify-between text-green-400"><span>${p.toFixed(2)}</span><span class="text-white">0.${Math.floor(Math.random()*9)}2</span></div>`).join('')}
- `;
-
- const p2p=[
-  {u:'Kwame_GH',t:'SELL',c:'500 USDT',p:'15.20 GHS',r:'98%',pay:'MTN MoMo'},
-  {u:'AmaTrader',t:'BUY',c:'0.5 BTC',p:'34,210 GHS',r:'99%',pay:'Bank Transfer'},
-  {u:'AccraCrypto',t:'SELL',c:'1000 USDT',p:'15.15 GHS',r:'97%',pay:'Vodafone Cash'},
- ];
- document.getElementById('p2p').innerHTML=p2p.map(x=>`
-  <div class="card p-3 rounded-xl mb-2">
-  <div class="flex justify-between"><span class="text-sm font-bold"><i class="fa-solid fa-circle-user text-gray-500"></i> ${x.u} <span class="text-green-400 text-xs">${x.r} ✓</span></span><span class="text-[10px] px-2 py-1 rounded ${x.t=='SELL'?'bg-red-900 text-red-400':'bg-green-900 text-green-400'}">${x.t}</span></div>
-  <div class="flex justify-between mt-2"><div><p class="text-[11px] text-gray-400">Amount</p><p class="font-bold text-sm">${x.c}</p></div><div class="text-right"><p class="text-[11px] text-gray-400">Price</p><p class="font-bold text-sm">${x.p}</p></div></div>
-  <div class="flex justify-between items-center mt-2"><span class="text-[11px] text-gray-400"><i class="fa-solid fa-credit-card"></i> ${x.pay}</span><button onclick="alert('P2P Trade Success Boss! 2% fee added to OWNER wallet!')" class="px-6 py-1.5 rounded font-bold text-xs ${x.t=='SELL'?'bg-green-500 text-black':'bg-red-500 text-white'}">${x.t=='SELL'?'Buy':'Sell'}</button></div>
-  </div>
- `).join('');
-
- // fake chart
- const c=document.getElementById('chart');
- if(c){
-  const ctx=c.getContext('2d');
-  c.width=300;c.height=180;
-  ctx.strokeStyle='#FCD535';ctx.lineWidth=2;ctx.beginPath();
-  let y=100;for(let x=0;x<300;x++){y+= (Math.random()-0.5)*5; if(x==0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.stroke();
- }
+ document.getElementById('markets').innerHTML=[
+  {s:'BTC/USDT',pr:'68,420.50',ch:'+2.34%',up:true},{s:'ETH/USDT',pr:'3,240.10',ch:'-1.12%',up:false},{s:'BNB/USDT',pr:'620.40',ch:'+5.10%',up:true},{s:'SOL/USDT',pr:'145.20',ch:'+8.30%',up:true}
+ ].map(m=>`<div class="flex justify-between py-3 border-b border-[#1E2329]"><div><p class="font-bold text-sm">${m.s}</p></div><div class="text-right"><p class="font-bold text-sm">${m.pr}</p><p class="text-xs px-2 py-0.5 rounded ${m.up?'bg-green-900 text-green-400':'bg-red-900 text-red-400'}">${m.ch}</p></div></div>`).join('');
+ document.getElementById('orderbook').innerHTML=`${[68425,68424,68423].map(p=>`<div class="flex justify-between text-red-400"><span>${p}</span><span>0.25</span></div>`).join('')}<div class="text-green-400 font-bold py-1">68,420.50</div>${[68420,68419,68418].map(p=>`<div class="flex justify-between text-green-400"><span>${p}</span><span>0.22</span></div>`).join('')}`;
+ document.getElementById('p2p').innerHTML=[{u:'Kwame_GH',t:'SELL',c:'500 USDT',p:'15.20 GHS'},{u:'AmaTrader',t:'BUY',c:'0.5 BTC',p:'34,210 GHS'}].map(x=>`<div class="card p-3 rounded-xl mb-2"><div class="flex justify-between"><span class="text-sm font-bold">${x.u}</span><span class="text-[10px] px-2 py-1 rounded ${x.t=='SELL'?'bg-red-900 text-red-400':'bg-green-900 text-green-400'}">${x.t}</span></div><div class="flex justify-between mt-2"><span class="text-sm">${x.c}</span><span class="text-sm font-bold">${x.p}</span></div><button class="w-full mt-2 ${x.t=='SELL'?'bg-green-500':'bg-red-500'} py-2 rounded font-bold text-xs text-black">${x.t=='SELL'?'Buy':'Sell'}</button></div>`).join('');
+ const c=document.getElementById('chart');if(c){const ctx=c.getContext('2d');c.width=300;c.height=180;ctx.strokeStyle='#FCD535';ctx.lineWidth=2;ctx.beginPath();let y=100;for(let x=0;x<300;x++){y+=(Math.random()-0.5)*5;if(x==0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.stroke();}
 }
-if(localStorage.getItem('zalago_user')){goApp()}
+function previewImg(input, id){
+ const file=input.files[0];
+ if(file){const reader=new FileReader();reader.onload=function(e){const img=document.getElementById(id);img.src=e.target.result;img.classList.remove('hidden');};reader.readAsDataURL(file);}
+}
+function submitKYC(){alert('Boss! KYC Submitted! Ghana Card front, back and selfie received. You (Owner) can verify in admin panel! User will wait for your approval!');}
+function copyRef(){navigator.clipboard.writeText(document.getElementById('refLink').innerText);alert('Referral link copied Boss!');}
+function shareWhatsApp(){window.open('https://wa.me/?text=Join ZALAGO44 Ghana No1 Trading Platform! Use my code VAA: https://zalago44.github.io/?ref=VAA','_blank');}
+function shareAll(){if(navigator.share){navigator.share({title:'ZALAGO44',text:'Join ZALAGO44 Ghana Trading! Code VAA',url:'https://zalago44.github.io/?ref=VAA'});}else{copyRef();}}
+function openChat(){document.getElementById('chatModal').classList.remove('hidden');}
+function closeChat(){document.getElementById('chatModal').classList.add('hidden');}
+function sendChat(){
+ const inp=document.getElementById('chatInput');const txt=inp.value.trim();if(!txt)return;
+ const box=document.getElementById('chatBox');
+ box.innerHTML+=`<div class="bg-[#FCD535] text-black p-2 rounded-lg text-xs max-w-[80%] ml-auto mt-2">${txt}</div>`;
+ inp.value='';
+ setTimeout(()=>{box.innerHTML+=`<div class="card2 p-2 rounded-lg text-xs max-w-[80%] mt-2">Thanks for message! I am the Owner of ZALAGO44. I will reply you soon Boss! Your profit is safe! 🙏</div>`;box.scrollTop=box.scrollHeight;},1000);
+ box.scrollTop=box.scrollHeight;
+}
 </script>
 </body>
-  </html>
+ </html>
