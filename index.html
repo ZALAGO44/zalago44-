@@ -3,96 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZALAGO44 - Trade Crypto</title>
+<title>ZALAGO44</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#0B0E11;color:#fff}
-.header{display:flex;justify-content:space-between;padding:12px;background:#181A20;position:sticky;top:0;z-index:10}
+.header{display:flex;justify-content:space-between;padding:12px;background:#181A20;position:sticky;top:0}
 .logo{color:#FCD535;font-weight:900;font-size:22px}
-.app-btn{background:#FCD535;color:#000;padding:6px 12px;border-radius:6px;font-weight:bold;border:none;cursor:pointer}
+.app-btn{background:#FCD535;color:#000;padding:6px 12px;border-radius:6px;font-weight:bold;border:none;display:none}
 .page{display:none;padding:15px;padding-bottom:80px;min-height:85vh}
 .page.active{display:block}
 .card{background:#1E2329;border-radius:12px;padding:15px;margin:10px 0}
-.input{width:100%;padding:14px;background:#2B3139;border:none;border-radius:8px;color:#fff;margin:8px 0;font-size:16px}
-.btn{width:100%;padding:14px;background:#FCD535;color:#000;border:none;border-radius:8px;font-weight:bold;font-size:16px;margin-top:10px;cursor:pointer}
+.input{width:100%;padding:14px;background:#2B3139;border:none;border-radius:8px;color:#fff;margin:8px 0}
+.btn{width:100%;padding:14px;background:#FCD535;color:#000;border:none;border-radius:8px;font-weight:bold;margin-top:10px}
 .btn2{display:block;margin:15px 0;padding:16px;background:#FCD535;color:#000;text-align:center;font-weight:bold;border-radius:12px;text-decoration:none}
-.nav{position:fixed;bottom:0;width:100%;background:#181A20;display:none;justify-content:space-around;padding:10px 0;border-top:1px solid #2B3139;z-index:20}
+.nav{position:fixed;bottom:0;width:100%;background:#181A20;display:none;justify-content:space-around;padding:10px 0;border-top:1px solid #2B3139}
 .nav.show{display:flex}
-.nav div{color:#848E9C;font-size:11px;text-align:center;cursor:pointer}
+.nav div{color:#848E9C;font-size:11px;text-align:center}
 .nav div.active{color:#FCD535}
 .ticker{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #2B3139}
 </style>
 </head>
 <body>
-<div class="header">
-<div class="logo">ZALAGO44</div>
-<button class="app-btn" id="topAppBtn" style="display:none" onclick="alert('Add to Home Screen: Tap 3 dots > Install App')">📥 APP</button>
-</div>
+<div class="header"><div class="logo">ZALAGO44</div><button class="app-btn" id="topBtn">📥 APP</button></div>
 
 <div id="register-page" class="page active">
 <div class="card">
 <h2 style="color:#FCD535">Welcome to ZALAGO44</h2>
-<p style="color:#848E9C;margin:8px 0">Trade like Binance - Demo $1000</p>
+<p style="color:#848E9C">Demo $1000 - Learn Trading</p>
 <select class="input"><option>🇬🇭 Ghana +233</option><option>🇳🇬 Nigeria +234</option></select>
 <input class="input" id="email" placeholder="Email / Phone">
 <input class="input" type="password" placeholder="Password">
-<button class="btn" onclick="doRegister()">Create Account - Get $1000 Demo</button>
-<p style="text-align:center;margin-top:12px;color:#848E9C">Already have? <span style="color:#FCD535" onclick="showPage('login-page')">Login</span></p>
-</div>
-</div>
-
-<div id="login-page" class="page">
-<div class="card">
-<h2>Login</h2>
-<input class="input" placeholder="Email">
-<input class="input" type="password" placeholder="Password">
-<button class="btn" onclick="doRegister()">Login</button>
+<button class="btn" onclick="doRegister()">Create Account</button>
 </div>
 </div>
 
 <div id="home-page" class="page">
-<div class="card" style="background:linear-gradient(135deg,#FCD535,#F0B90B);color:#000">
-<h3>Demo Balance</h3><h1>$1,000.00</h1><p>Paper trading - No real money</p>
-</div>
-<div class="card"><h3>Markets</h3>
-<div class="ticker"><span>BTC/USDT</span><span>$68,245</span></div>
-<div class="ticker"><span>ETH/USDT</span><span>$3,890</span></div>
-</div>
+<div class="card" style="background:#FCD535;color:#000"><h3>Demo Balance</h3><h1>$1,000.00</h1></div>
+<div class="card"><h3>Markets</h3><div class="ticker"><span>BTC/USDT</span><span>$68,245</span></div><div class="ticker"><span>ETH/USDT</span><span>$3,890</span></div></div>
 </div>
 
 <div id="markets-page" class="page"><div class="card"><h3>Markets</h3><div class="ticker"><span>BTC/USDT</span><span>$68,245</span></div></div></div>
 
 <div id="trade-page" class="page">
 <div class="card">
-<h3>BTC/USDT - Paper Trade</h3>
-<button class="btn" style="background:#0ECB81;color:#fff" onclick="alert('BUY Demo')">BUY / LONG</button>
-<button class="btn" style="background:#F6465D;color:#fff" onclick="alert('SELL Demo')">SELL / SHORT</button>
-<a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="btn2">🚀 Trade For Real & Get $10 Bonus</a>
+<h3>BTC/USDT Paper</h3>
+<button class="btn" style="background:#0ECB81;color:#fff">BUY</button>
+<button class="btn" style="background:#F6465D;color:#fff">SELL</button>
+<a href="https://www.binance.com/en/activity/referral-entry/CPA?ref=CPA_00YOURCODE" target="_blank" class="btn2">🚀 Trade For Real - Get Bonus</a>
 </div>
 </div>
 
-<div id="assets-page" class="page"><div class="card"><h3>My Assets (Demo)</h3><h1>$1,000.00</h1></div></div>
-<div id="profile-page" class="page"><div class="card"><h3>KYC</h3><input class="input" placeholder="Full Name"><button class="btn" onclick="alert('KYC Demo')">Submit</button><button class="btn" style="background:#2B3139;color:#fff" onclick="doLogout()">Logout</button></div></div>
+<div id="assets-page" class="page"><div class="card"><h3>Demo Assets</h3><h1>$1,000</h1></div></div>
+<div id="profile-page" class="page"><div class="card"><h3>KYC</h3><input class="input" placeholder="Full Name"><button class="btn" onclick="doLogout()">Logout</button></div></div>
 
 <div class="nav" id="bottomNav">
 <div id="nav-home" class="active" onclick="showPage('home-page')">🏠<br>Home</div>
-<div id="nav-markets" onclick="showPage('markets-page')">📈<br>Markets</div>
-<div id="nav-trade" onclick="showPage('trade-page')">💱<br>Trade</div>
-<div id="nav-assets" onclick="showPage('assets-page')">💼<br>Assets</div>
-<div id="nav-profile" onclick="showPage('profile-page')">👤<br>Profile</div>
+<div onclick="showPage('markets-page')">📈<br>Markets</div>
+<div onclick="showPage('trade-page')">💱<br>Trade</div>
+<div onclick="showPage('assets-page')">💼<br>Assets</div>
+<div onclick="showPage('profile-page')">👤<br>Profile</div>
 </div>
 
 <script>
 function showPage(id){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById(id).classList.add('active');
- let nav=document.getElementById('bottomNav');
- let appBtn=document.getElementById('topAppBtn');
- if(id==='register-page'||id==='login-page'){nav.classList.remove('show');appBtn.style.display='none';}
- else{nav.classList.add('show');appBtn.style.display='block';}
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+let nav=document.getElementById('bottomNav');
+let btn=document.getElementById('topBtn');
+if(id==='register-page'){nav.classList.remove('show');btn.style.display='none';}
+else{nav.classList.add('show');btn.style.display='block';}
 }
 function doRegister(){showPage('home-page');}
 function doLogout(){showPage('register-page');}
 </script>
 </body>
-  </html>
+</html>
