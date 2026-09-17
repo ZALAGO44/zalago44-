@@ -3,86 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ZALAGO44 PRO P2P</title>
+<title>ZALAGO44 PRO P2P - Binance Style</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a0a;color:#fff;font-family:system-ui}
 .hd{position:sticky;top:0;z-index:99;background:#111;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #222}
 .logo{display:flex;align-items:center;gap:8px;font-weight:900;cursor:pointer}
-.z{width:36px;height:36px;background:#f5c518;border-radius:10px;display:grid;place-items:center;color:#000;font-weight:900}
+.z{width:36px;height:36px;background:#f5c518;border-radius:10px;display:grid;place-items:center;color:#000;font-weight:900;font-size:20px}
 .btn{padding:10px 18px;border-radius:30px;border:0;font-weight:800;cursor:pointer}
 .y{background:#f5c518;color:#000}
-.blk{background:#1a1a1a;color:#fff;border:1px solid #333}
-.tabs{display:flex;gap:8px;padding:12px}
-.tab{padding:10px 16px;border-radius:30px;background:#1e1e1e;border:1px solid #333;color:#fff}
+.blk{background:#1e1e1e;color:#fff;border:1px solid #333}
+.tabs{display:flex;gap:8px;padding:12px;overflow-x:auto}
+.tab{padding:10px 16px;border-radius:30px;background:#1e1e1e;border:1px solid #333;color:#fff;white-space:nowrap;cursor:pointer}
 .tab.a{background:#f5c518;color:#000;font-weight:800}
 #adminTab{display:none!important}
 .card{background:#141414;border:1px solid #222;border-radius:16px;padding:14px;margin:10px}
 .inp{width:100%;padding:12px;background:#0f0f0f;border:1px solid #333;border-radius:10px;color:#fff;margin:6px 0}
-.how{background:linear-gradient(135deg,#f5c51820,#f5c51805);border:1px solid #f5c51840;border-radius:14px;padding:12px;margin:10px;font-size:14px}
-.offer{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:14px;padding:14px;margin:10px;display:flex;justify-content:space-between;align-items:center}
-.modal{position:fixed;inset:0;background:#000c;display:none;place-items:center;z-index:200}
+.how{background:linear-gradient(135deg,#f5c51820,#f5c51805);border:1px solid #f5c51840;border-radius:14px;padding:12px;margin:10px;font-size:13px;line-height:1.5}
+.offer{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:14px;padding:14px;margin:10px}
+.offer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.avatar{width:36px;height:36px;background:#222;border-radius:50%;display:grid;place-items:center;font-weight:800}
+.modal{position:fixed;inset:0;background:#000d;display:none;place-items:center;z-index:200;padding:14px}
 .modal.open{display:grid}
-.box{background:#151515;border:1px solid #333;border-radius:16px;padding:20px;width:90%;max-width:380px}
+.box{background:#171717;border:1px solid #333;border-radius:18px;padding:20px;width:100%;max-width:400px}
+.kbd{background:#222;padding:2px 6px;border-radius:6px;font-size:11px;border:1px solid #333}
+.hr{border:0;border-top:1px solid #222;margin:10px 0}
+.between{display:flex;justify-content:space-between;align-items:center}
+.green{color:#00c853}
+.yellow{color:#f5c518}
+.small{font-size:12px;color:#888}
 </style>
 </head>
 <body>
-<div class="hd">
-<div class="logo" id="zLogo"><div class="z">Z</div>ZALAGO44 PRO P2P</div>
-<button class="btn y">Login</button>
-</div>
-<div class="tabs">
-<button class="tab a" id="mTab" onclick="showTab('market')">P2P Market</button>
-<button class="tab" id="wTab" onclick="showTab('wallet')">Wallet</button>
-<button class="tab" id="adminTab" onclick="showTab('admin')">Admin</button>
-</div>
-<div id="market">
-<div class="how">💡 <b>How:</b> Buyer pays MoMo → USDT locked <b>TJ2V...Brx</b> → Seller confirms → 2% fee to you! CEO: Tap Z 5x or ?admin</div>
-<div style="display:flex;justify-content:space-between;align-items:center;padding:0 10px">
-<h3>Live Offers</h3>
-<button class="btn y" onclick="openCreate()">+ Create Offer</button>
-</div>
-<div id="offersList"></div>
-</div>
-<div id="wallet" style="display:none">
-<div class="card"><h3>Wallet</h3><p>Escrow: TJ2VsW3c7aWq4p6eR8tY9uI0oP1aS2dF3gH4jK5lBrx</p></div>
-</div>
-<div id="admin" style="display:none">
-<div class="card">
-<h2>👑 CEO DASHBOARD</h2>
-<p style="color:#f5c518">Boss Access Granted - Password 1234</p>
-<div style="margin:12px 0;display:flex;gap:10px">
-<div class="card" style="flex:1;margin:0">Profit: <b id="profit" style="color:#f5c518">GH₵0</b></div>
-<div class="card" style="flex:1;margin:0">Trades: <b id="trades">0</b></div>
-</div>
-<div id="adminOffers"></div>
-<button class="btn blk" style="width:100%;margin-top:12px" onclick="showTab('market')">Back to Market</button>
-</div>
-</div>
-<div class="modal" id="createModal"><div class="box">
-<h3>Create Offer</h3>
-<input id="oAmount" class="inp" placeholder="USDT Amount e.g 100">
-<input id="oPrice" class="inp" placeholder="Price GH₵ e.g 17.5">
-<select id="oType" class="inp"><option value="sell">I SELL USDT</option><option value="buy">I BUY USDT</option></select>
-<div style="display:flex;gap:8px;margin-top:10px">
-<button class="btn blk" style="flex:1" onclick="closeCreate()">Cancel</button>
-<button class="btn y" style="flex:1" onclick="saveOffer()">Create</button>
-</div>
-</div></div>
+<div class="hd"><div class="logo" id="zLogo"><div class="z">Z</div>ZALAGO44 PRO P2P</div><button class="btn y" onclick="document.getElementById('walletModal').classList.add('open')">Connect</button></div>
+<div class="tabs"><button class="tab a" id="mTab" onclick="showTab('market')">🟢 P2P Market</button><button class="tab" id="oTab" onclick="showTab('orders')">My Orders</button><button class="tab" id="wTab" onclick="showTab('wallet')">Wallet</button><button class="tab" id="adminTab">Admin</button></div>
+<div id="market"><div class="how">💡 <b>BINANCE MODE:</b> Buyer Buy → Pays MoMo → Seller confirm → USDT from escrow <b>TJ2V...Brx</b> → 2% fee to you! CEO: Tap Z 5x or ?admin + 1234<br><br>🔒 Escrow: <b style="word-break:break-all">TJ2VsW3c7aWq4p6eR8tY9uI0oP1aS2dF3gH4jK5lBrx</b> (TRC20)</div><div class="between" style="padding:0 10px"><h3>Live Offers</h3><button class="btn y" onclick="openCreate()">+ Create Offer</button></div><div id="offersList"></div></div>
+<div id="orders" style="display:none"><div class="card"><h3>📋 My Orders</h3><p class="small">Trade history</p></div><div id="ordersList"></div></div>
+<div id="wallet" style="display:none"><div class="card"><h3>💼 Wallet</h3><div class="hr"></div><p class="small">ESCROW USDT TRC20</p><p style="background:#0a0a0a;padding:10px;border-radius:10px;font-size:12px;word-break:break-all;margin:6px 0">TJ2VsW3c7aWq4p6eR8tY9uI0oP1aS2dF3gH4jK5lBrx</p><div class="hr"></div><button class="btn y" style="width:100%" onclick="alert('Wallet: TJ2V...Brx')">Connect Wallet</button></div></div>
+<div id="admin" style="display:none"><div class="card"><h2>👑 CEO DASHBOARD</h2><p class="yellow">Welcome Boss!</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0"><div class="card" style="margin:0;text-align:center"><div class="small">PROFIT</div><b id="profit" style="color:#f5c518;font-size:18px">GH₵0.00</b></div><div class="card" style="margin:0;text-align:center"><div class="small">TRADES</div><b id="trades" style="font-size:18px">0</b></div><div class="card" style="margin:0;text-align:center"><div class="small">VOLUME</div><b id="volume">0 USDT</b></div><div class="card" style="margin:0;text-align:center"><div class="small">OFFERS</div><b id="offerCount">0</b></div></div><div class="between"><h3>Manage</h3><button class="btn blk" onclick="clearAll()">Clear All</button></div><div id="adminOffers" style="margin-top:10px"></div><div class="hr"></div><button class="btn blk" style="width:100%" onclick="resetProfit()">Reset Profit</button><button class="btn blk" style="width:100%;margin-top:8px" onclick="showTab('market')">Back</button></div></div>
+<div class="modal" id="createModal"><div class="box"><h3>💰 Create Offer</h3><input id="oAmount" class="inp" type="number" placeholder="USDT Amount e.g 100"><input id="oPrice" class="inp" type="number" placeholder="Price GH₵ e.g 17.5"><select id="oType" class="inp"><option value="sell">🔴 I SELL USDT</option><option value="buy">🟢 I BUY USDT</option></select><input id="oMomo" class="inp" placeholder="Your MoMo Number"><input id="oName" class="inp" placeholder="Trader Name"><div style="display:flex;gap:8px;margin-top:12px"><button class="btn blk" style="flex:1" onclick="closeCreate()">Cancel</button><button class="btn y" style="flex:1" onclick="saveOffer()">Create</button></div></div></div>
+<div class="modal" id="tradeModal"><div class="box"><h3 id="tradeTitle">Trade</h3><div id="tradeInfo" class="card" style="margin:10px 0"></div><div class="card" style="background:#f5c51810;border-color:#f5c51840"><p class="small">1. Buyer pays MoMo 2. Seller confirms 3. USDT from TJ2V...Brx 4. Fee 2%</p></div><input id="tMomo" class="inp" placeholder="Your MoMo number"><div style="display:flex;gap:8px;margin-top:12px"><button class="btn blk" style="flex:1" onclick="closeTrade()">Cancel</button><button class="btn y" style="flex:1" onclick="confirmTrade()">Confirm Paid</button></div></div></div>
+<div class="modal" id="walletModal"><div class="box"><h3>Connect Wallet</h3><button class="btn y" style="width:100%;margin-top:10px" onclick="alert('TronLink: TJ2V...Brx');closeWallet()">TronLink</button><button class="btn blk" style="width:100%;margin-top:8px" onclick="closeWallet()">Close</button></div></div>
 <script>
-let tap=0;
-let offers=JSON.parse(localStorage.getItem('z_offers_v8')||'[]');
-let profit=parseFloat(localStorage.getItem('z_profit_v8')||'0');
+let tap=0;let offers=JSON.parse(localStorage.getItem('z_offers_final')||'[]');let orders=JSON.parse(localStorage.getItem('z_orders_final')||'[]');let profit=parseFloat(localStorage.getItem('z_profit_final')||'0');let volume=parseFloat(localStorage.getItem('z_vol_final')||'0');let currentTrade=null;
 document.getElementById('zLogo').onclick=()=>{tap++;setTimeout(()=>tap=0,2000);if(tap>=5)openCEO();};
-function openCEO(){let p=prompt('CEO ONLY - Password?');if(!p)return;let cp=p.trim();if(cp==='1234'||cp==='ZALAGO44ADMIN'||cp==='zalago44'){showTab('admin');alert('Welcome Boss 👑 CEO Mode ON');}else alert('Wrong! Use 1234');}
-if(location.search.includes('admin'))setTimeout(openCEO,700);
-function showTab(t){document.getElementById('market').style.display=t==='market'?'block':'none';document.getElementById('wallet').style.display=t==='wallet'?'block':'none';document.getElementById('admin').style.display=t==='admin'?'block':'none';document.getElementById('mTab').className=t==='market'?'tab a':'tab';document.getElementById('wTab').className=t==='wallet'?'tab a':'tab';}
-function openCreate(){document.getElementById('createModal').classList.add('open');}
-function closeCreate(){document.getElementById('createModal').classList.remove('open');}
-function saveOffer(){let a=document.getElementById('oAmount').value;let p=document.getElementById('oPrice').value;let ty=document.getElementById('oType').value;if(!a||!p)return alert('Fill amount & price');offers.push({id:Date.now(),amount:a,price:p,type:ty});localStorage.setItem('z_offers_v8',JSON.stringify(offers));closeCreate();render();alert('Offer Created! 💰');}
-function render(){let h='';if(offers.length==0){h='<div class=card style=text-align:center;color:#666>No offers yet<br><br><button class=btn y onclick=openCreate()>💰 CREATE FIRST OFFER</button></div>';}else{offers.forEach(o=>{h+='<div class=offer><div><b>'+o.amount+' USDT</b> '+(o.type==='sell'?'🔴 Sell':'🟢 Buy')+'<br><span style=color:#888>GH₵'+o.price+' per USDT</span></div><button class=btn y onclick=doTrade('+o.id+')>'+(o.type==='sell'?'Buy':'Sell')+'</button></div>';});}document.getElementById('offersList').innerHTML=h;document.getElementById('adminOffers').innerHTML=h||'<p style=color:#666>No offers</p>';document.getElementById('profit').innerText='GH₵'+profit.toFixed(2);document.getElementById('trades').innerText=offers.length;}
-function doTrade(id){let o=offers.find(x=>x.id===id);if(!o)return;let fee=(parseFloat(o.amount)*parseFloat(o.price)*0.02).toFixed(2);if(confirm('Trade '+o.amount+' USDT @ GH₵'+o.price+'\n\nBuyer pays MoMo → USDT locked TJ2V...Brx\nYour fee: GH₵'+fee+'\n\nConfirm?')){profit+=parseFloat(fee);localStorage.setItem('z_profit_v8',profit);render();alert('Trade started! Fee GH₵'+fee+' added!');}}
+function openCEO(){let p=prompt('CEO ONLY - Password?');if(!p)return;let cp=p.trim();if(cp==='1234'||cp==='ZALAGO44ADMIN'||cp.toLowerCase()==='zalago44'){showTab('admin');alert('Welcome Boss 👑 V9 FINAL LIVE!');}else alert('Wrong! Use 1234');}
+if(location.search.includes('admin'))setTimeout(openCEO,600);
+function showTab(t){document.getElementById('market').style.display=t==='market'?'block':'none';document.getElementById('orders').style.display=t==='orders'?'block':'none';document.getElementById('wallet').style.display=t==='wallet'?'block':'none';document.getElementById('admin').style.display=t==='admin'?'block':'none';document.getElementById('mTab').className=t==='market'?'tab a':'tab';document.getElementById('oTab').className=t==='orders'?'tab a':'tab';document.getElementById('wTab').className=t==='wallet'?'tab a':'tab';}
+function openCreate(){document.getElementById('createModal').classList.add('open');}function closeCreate(){document.getElementById('createModal').classList.remove('open');}function closeTrade(){document.getElementById('tradeModal').classList.remove('open');}function closeWallet(){document.getElementById('walletModal').classList.remove('open');}
+function saveOffer(){let a=document.getElementById('oAmount').value.trim();let pr=document.getElementById('oPrice').value.trim();let ty=document.getElementById('oType').value;let momo=document.getElementById('oMomo').value.trim();let name=document.getElementById('oName').value.trim()||'Trader';if(!a||!pr)return alert('Fill amount & price');offers.push({id:Date.now(),amount:parseFloat(a),price:parseFloat(pr),type:ty,momo:momo,name:name,time:new Date().toLocaleString()});localStorage.setItem('z_offers_final',JSON.stringify(offers));closeCreate();render();alert('Offer Live! 💰');}
+function render(){let h='';if(offers.length===0)h='<div class=card style=text-align:center;color:#666>No offers<br><br><button class=btn y onclick=openCreate()>💰 CREATE FIRST OFFER</button></div>';else offers.forEach(o=>{let total=(o.amount*o.price).toFixed(2);let fee=(o.amount*o.price*0.02).toFixed(2);h+=`<div class=offer><div style=flex:1><div class=offer-top><div style=display:flex;gap:8px;align-items:center><div class=avatar>${o.name.charAt(0).toUpperCase()}</div><div><b>${o.name}</b><br><span class=small>${o.time}</span></div></div><b style=color:${o.type==='sell'?'#ff5252':'#00c853'}>${o.type==='sell'?'SELL':'BUY'}</b></div><div><b style=font-size:18px>${o.amount} USDT</b> <span class=small>@ GH₵${o.price}</span></div><div class=small>Total GH₵${total} | Fee GH₵${fee}</div></div><button class=btn y onclick=doTrade(${o.id})>${o.type==='sell'?'Buy':'Sell'}</button></div>`;});document.getElementById('offersList').innerHTML=h;let ah='';offers.forEach(o=>{ah+=`<div class=offer><span>${o.amount} USDT @ GH₵${o.price}</span><button class=btn blk onclick=delOffer(${o.id})>X</button></div>`;});document.getElementById('adminOffers').innerHTML=ah||'<p class=small>No offers</p>';document.getElementById('profit').innerText='GH₵'+profit.toFixed(2);document.getElementById('trades').innerText=orders.length;document.getElementById('volume').innerText=volume.toFixed(2)+' USDT';document.getElementById('offerCount').innerText=offers.length;let oh='';if(orders.length===0)oh='<div class=card style=color:#666;text-align:center>No orders</div>';else orders.slice().reverse().forEach(od=>{oh+=`<div class=card><div class=between><b>${od.amount} USDT ${od.type}</b><span class=green>${od.status}</span></div><div class=small>GH₵${od.total} | Fee GH₵${od.fee} | ${od.time}</div></div>`;});document.getElementById('ordersList').innerHTML=oh;}
+function delOffer(id){offers=offers.filter(o=>o.id!==id);localStorage.setItem('z_offers_final',JSON.stringify(offers));render();}function clearAll(){if(confirm('Clear all?')){offers=[];localStorage.setItem('z_offers_final','[]');render();}}function resetProfit(){if(confirm('Reset?')){profit=0;volume=0;orders=[];localStorage.setItem('z_profit_final','0');localStorage.setItem('z_vol_final','0');localStorage.setItem('z_orders_final','[]');render();}}
+function doTrade(id){let o=offers.find(x=>x.id===id);if(!o)return;currentTrade=o;let total=(o.amount*o.price).toFixed(2);let fee=(o.amount*o.price*0.02).toFixed(2);document.getElementById('tradeTitle').innerText=(o.type==='sell'?'Buy':'Sell')+' '+o.amount+' USDT';document.getElementById('tradeInfo').innerHTML=`<div class=between><span>Trader</span><b>${o.name}</b></div><div class=between><span>Amount</span><b>${o.amount} USDT</b></div><div class=between><span>Price</span><b>GH₵${o.price}</b></div><div class=between><span>Total</span><b>GH₵${total}</b></div><div class=between><span>Fee</span><b class=yellow>GH₵${fee}</b></div>`;document.getElementById('tradeModal').classList.add('open');}
+function confirmTrade(){if(!currentTrade)return;let m=document.getElementById('tMomo').value.trim();if(!m)return alert('Enter MoMo');let total=currentTrade.amount*currentTrade.price;let fee=total*0.02;profit+=fee;volume+=currentTrade.amount;orders.push({id:Date.now(),amount:currentTrade.amount,price:currentTrade.price,total:total.toFixed(2),fee:fee.toFixed(2),type:currentTrade.type,status:'completed',time:new Date().toLocaleString()});localStorage.setItem('z_profit_final',profit.toString());localStorage.setItem('z_vol_final',volume.toString());localStorage.setItem('z_orders_final',JSON.stringify(orders));offers=offers.filter(o=>o.id!==currentTrade.id);localStorage.setItem('z_offers_final',JSON.stringify(offers));closeTrade();showTab('orders');render();alert('Trade Done! Fee GH₵'+fee.toFixed(2)+' to you!');}
 render();
 </script>
 </body>
-  </html>
+</html>
