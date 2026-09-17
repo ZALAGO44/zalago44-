@@ -1,16 +1,115 @@
-{
-  "name": "ZALAGO44 - Demo Trading",
-  "short_name": "ZALAGO44",
-  "description": "Trade BTC with $1000 Demo - Like Binance",
-  "start_url": "/zalago44-/",
-  "display": "standalone",
-  "background_color": "#0B0E11",
-  "theme_color": "#FCD535",
-  "icons": [
-    {
-      "src": "https://cdn-icons-png.flaticon.com/512/6001/6001527.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZALAGO44</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FCD535">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#0B0E11;color:#fff}
+.header{display:flex;justify-content:space-between;padding:12px;background:#181A20;position:sticky;top:0;z-index:10}
+.logo{color:#FCD535;font-weight:900;font-size:22px}
+.app-btn{background:#FCD535;color:#000;padding:6px 12px;border-radius:6px;font-weight:bold;border:none;display:none}
+.page{display:none;padding:15px;padding-bottom:90px;min-height:85vh}
+.page.active{display:block}
+.card{background:#1E2329;border-radius:12px;padding:15px;margin:10px 0}
+.input{width:100%;padding:14px;background:#2B3139;border:none;border-radius:8px;color:#fff;margin:8px 0;font-size:16px}
+.btn{width:100%;padding:14px;background:#FCD535;color:#000;border:none;border-radius:8px;font-weight:bold;font-size:16px;margin-top:10px;cursor:pointer}
+.btn2{display:block;margin:15px 0;padding:16px;background:#FCD535;color:#000;text-align:center;font-weight:bold;border-radius:12px;text-decoration:none}
+.nav{position:fixed;bottom:0;width:100%;background:#181A20;display:none;justify-content:space-around;padding:10px 0;border-top:1px solid #2B3139;z-index:20}
+.nav.show{display:flex}
+.nav div{color:#848E9C;font-size:11px;text-align:center}
+.nav div.active{color:#FCD535}
+.ticker{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #2B3139}
+.price{font-size:34px;font-weight:900}
+.trade-card{display:flex;justify-content:space-between;align-items:center;background:#2B3139;padding:12px;border-radius:10px;margin:8px 0}
+.close-btn{background:#F6465D;color:#fff;border:none;padding:8px 16px;border-radius:6px;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="header"><div class="logo">ZALAGO44</div><button class="app-btn" id="topBtn" onclick="installApp()">📥 APP</button></div>
+<div id="register-page" class="page active">
+<div class="card">
+<h2 style="color:#FCD535">Welcome to ZALAGO44</h2>
+<p style="color:#848E9C;margin:8px 0">Demo $1000 - Learn Trading like Binance</p>
+<select class="input"><option>🇬🇭 Ghana +233</option><option>🇳🇬 Nigeria +234</option></select>
+<input class="input" placeholder="Email / Phone">
+<input class="input" type="password" placeholder="Password">
+<button class="btn" onclick="showPage('home-page')">Create Account - Get $1000 Demo</button>
+</div>
+</div>
+<div id="home-page" class="page">
+<div class="card" style="background:linear-gradient(135deg,#FCD535,#F0B90B);color:#000"><h3>Demo Balance</h3><h1 id="bal1">$1,000.00</h1><p id="pnl1" style="font-size:13px">Total P/L: +$0.00</p></div>
+<div class="card"><h3>Markets LIVE</h3><div class="ticker"><span>BTC/USDT</span><span id="btcPrice1">$68,245.00</span></div></div>
+<a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">🚀 Trade For Real & Earn USDC</a>
+</div>
+<div id="markets-page" class="page"><div class="card"><h3>Markets</h3><div class="ticker"><span>BTC/USDT</span><span id="btcPrice2">$68,245</span></div><div class="ticker"><span>ETH/USDT</span><span>$3,890</span></div></div></div>
+<div id="trade-page" class="page">
+<div class="card">
+<div style="display:flex;justify-content:space-between"><h3>BTC/USDT • 15m</h3><span style="color:#FCD535">Paper</span></div>
+<div class="price" id="livePrice">$68,245.00</div>
+<div id="liveChange" style="color:#0ECB81">+$0.00 LIVE</div>
+<canvas id="c" width="350" height="280" style="width:100%;height:280px;background:#0B0E11;border-radius:10px;margin:12px 0;border:1px solid #2B3139"></canvas>
+<div style="display:flex;gap:10px">
+<button class="btn" style="background:#0ECB81;color:#fff" onclick="doTrade('BUY')">BUY / LONG</button>
+<button class="btn" style="background:#F6465D;color:#fff" onclick="doTrade('SELL')">SELL / SHORT</button>
+</div>
+<p style="text-align:center;margin-top:12px;color:#848E9C;font-size:13px">Balance: <span class="bal">$1,000.00</span></p>
+<h4 style="margin-top:15px">Open Positions - Click CLOSE</h4>
+<div id="openTrades"></div>
+<a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">💰 Get REAL Money - Binance</a>
+</div>
+</div>
+<div id="assets-page" class="page"><div class="card"><h3>My Assets (Demo)</h3><h1 class="bal">$1,000.00</h1><p id="assetPnl" style="color:#848E9C">Total P/L: $0.00</p></div><div class="card"><a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">💰 Withdraw Real GHS - Binance</a></div></div>
+<div id="profile-page" class="page"><div class="card"><h3>Profile</h3><button class="btn" style="background:#2B3139;color:#fff" onclick="showPage('register-page')">Logout</button></div></div>
+<div class="nav" id="bottomNav">
+<div class="active" onclick="showPage('home-page')">🏠<br>Home</div>
+<div onclick="showPage('markets-page')">📈<br>Markets</div>
+<div onclick="showPage('trade-page')">💱<br>Trade</div>
+<div onclick="showPage('assets-page')">💼<br>Assets</div>
+<div onclick="showPage('profile-page')">👤<br>Profile</div>
+</div>
+<script>
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;});
+function installApp(){
+if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>{deferredPrompt=null;});}
+else{alert('To install ZALAGO44:\n1. Tap 3 dots ⋮ top\n2. Tap Add to Home screen\nYour app will be on phone! 📱');}
 }
+let price=68245,balance=1000,positions=[],candles=[];
+for(let i=0;i<80;i++)candles.push(68245+(Math.random()-0.5)*200);
+let canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+let nav=document.getElementById('bottomNav'),btn=document.getElementById('topBtn');
+if(id==='register-page'){nav.classList.remove('show');btn.style.display='none';}else{nav.classList.add('show');btn.style.display='block';}
+}
+function updatePrice(){
+let change=(Math.random()-0.48)*25;price+=change;candles.shift();candles.push(price);
+document.getElementById('livePrice').innerText='$'+price.toFixed(2);
+document.getElementById('btcPrice1').innerText='$'+price.toFixed(2);
+document.getElementById('btcPrice2').innerText='$'+price.toFixed(2);
+let ch=document.getElementById('liveChange');ch.innerText=(change>0?'+':'')+change.toFixed(2)+' LIVE • Real Chart';ch.style.color=change>0?'#0ECB81':'#F6465D';
+drawChart();updatePnL();
+}
+function drawChart(){
+ctx.clearRect(0,0,350,280);
+let min=Math.min(...candles),max=Math.max(...candles),range=max-min||1;
+ctx.strokeStyle='#1E2329';ctx.lineWidth=1;for(let i=0;i<4;i++){ctx.beginPath();ctx.moveTo(0,i*70);ctx.lineTo(350,i*70);ctx.stroke();}
+ctx.beginPath();ctx.strokeStyle='#FCD535';ctx.lineWidth=3;
+candles.forEach((p,i)=>{let x=i*(350/candles.length),y=260-((p-min)/range*220);if(i==0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.stroke();
+ctx.lineTo(350,280);ctx.lineTo(0,280);ctx.closePath();let grad=ctx.createLinearGradient(0,0,0,280);grad.addColorStop(0,'rgba(252,213,53,0.3)');grad.addColorStop(1,'rgba(252,213,53,0)');ctx.fillStyle=grad;ctx.fill();
+}
+function doTrade(type){positions.push({type,entry:price,amount:100,id:Date.now()});renderTrades();}
+function renderTrades(){
+document.getElementById('openTrades').innerHTML=positions.map((p,i)=>`<div class="trade-card"><div><b style="color:${p.type=='BUY'?'#0ECB81':'#F6465D'}">${p.type}</b> $${p.entry.toFixed(2)}<br><small id="pl${i}" style="font-weight:bold">$0.00</small></div><button class="close-btn" onclick="closeTrade(${i})">CLOSE</button></div>`).join('')||'<p style="color:#848E9C;font-size:12px;margin-top:8px">No open trades. Tap BUY or SELL</p>';
+}
+function closeTrade(idx){let p=positions[idx];let pl=p.type=='BUY'?(price-p.entry)*0.5:(p.entry-price)*0.5;balance+=pl;positions.splice(idx,1);renderTrades();updatePnL();alert('Closed! Profit: $'+pl.toFixed(2)+' added!');}
+function updatePnL(){let total=0;positions.forEach((p,i)=>{let pl=p.type=='BUY'?(price-p.entry)*0.5:(p.entry-price)*0.5;total+=pl;let el=document.getElementById('pl'+i);if(el){el.innerText=(pl>=0?'+$':'-$')+Math.abs(pl).toFixed(2)+' Live';el.style.color=pl>=0?'#0ECB81':'#F6465D';}});document.querySelectorAll('.bal').forEach(e=>e.innerText='$'+(balance+total).toFixed(2));document.getElementById('bal1').innerText='$'+(balance+total).toFixed(2);document.getElementById('pnl1').innerText='Total P/L: '+(total>=0?'+':'')+'$'+total.toFixed(2);document.getElementById('assetPnl').innerText='Total P/L: $'+total.toFixed(2)+' | Balance: $'+balance.toFixed(2);}
+setInterval(updatePrice,700);renderTrades();drawChart();
+</script>
+</body>
+  </html>
