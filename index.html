@@ -1,33 +1,69 @@
-<!-- BINANCE SUPPORT CHAT - EXACT LIKE YOUR SCREENSHOT -->
-<div id="chat" class="hidden fixed inset-0 bg-[#F5F5F5] z-[100] flex flex-col">
-  <!-- Header EXACT like Binance Support screenshot -->
-  <div class="bg-white p-3 flex items-center gap-3 border-b">
-    <button onclick="document.getElementById('chat').classList.add('hidden')" class="text-xl"><i class="fa-solid fa-arrow-left"></i></button>
-    <div class="w-10 h-10 bg-[#FCD535] rounded-lg flex items-center justify-center text-xl">🙂</div>
-    <div class="flex-1">
-      <p class="font-bold text-[16px] leading-tight">ZALAGO44 Support</p>
-      <p class="text-xs text-gray-500">Ask me anything</p>
-    </div>
-    <i class="fa-solid fa-globe text-xl text-gray-700"></i>
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ZALAGO44</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>body{background:#fff;font-family:Arial}.bY{background:#FCD535}</style>
+</head>
+<body class="pb-20">
 
-  <!-- View Chat History like screenshot -->
-  <div class="bg-[#F5F5F5] p-4 flex justify-center">
-    <span class="text-sm text-gray-500"><i class="fa-solid fa-arrow-up text-xs"></i> View Chat History</span>
-  </div>
-
-  <!-- Chat bubble EXACT like screenshot -->
-  <div class="flex-1 bg-[#F5F5F5] p-4">
-    <div class="bg-white rounded-2xl rounded-tl-sm p-4 shadow-sm max-w-[85%]">
-      <p class="text-[15px] leading-snug"><span class="text-xl">👋</span> Welcome to ZALAGO44 Support. How can I help you today?</p>
-    </div>
-  </div>
-
-  <!-- Bottom input EXACT like screenshot -->
-  <div class="bg-[#F5F5F5] p-3 flex items-center gap-3 pb-6">
-    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm"><i class="fa-solid fa-plus text-xl text-gray-700"></i></button>
-    <div class="flex-1 bg-white rounded-full px-4 py-3 shadow-sm">
-      <input id="chatInput" placeholder="Enter question here" class="w-full outline-none text-[15px] bg-transparent">
-    </div>
-  </div>
+<div id="auth">
+<div class="flex justify-between p-3 items-center">
+<div class="flex gap-4"><i class="fa-solid fa-bars text-xl"></i><i class="fa-solid fa-headset text-xl"></i></div>
+<div class="bg-[#F5F5F5] rounded-full p-1 flex text-sm"><span class="bg-white px-5 py-2 rounded-full font-bold shadow">Exchange</span><span class="px-5 py-2 text-gray-500 font-bold">Wallet</span></div>
+<div class="flex gap-3"><i class="fa-solid fa-link text-xl"></i><i class="fa-regular fa-message text-xl"></i></div>
 </div>
+<div class="px-3 mt-2"><div class="bg-[#F5F5F5] rounded-xl flex items-center p-3"><i class="fa-solid fa-magnifying-glass text-gray-400 mr-2"></i><span class="text-gray-400">🔥 ONE top gainer</span><i class="fa-solid fa-expand ml-auto text-gray-400"></i></div></div>
+<div class="flex flex-col items-center mt-10">
+<div class="text-7xl">🎫</div>
+<h1 class="text-[28px] font-black text-center mt-4 leading-tight">New User Bonus<br>Worth Up to<br><span class="text-[#F0B90B]">100 USD</span></h1>
+<button onclick="goApp()" class="bY px-10 py-3.5 rounded-xl font-bold mt-6">Sign Up/Log In</button>
+</div>
+<div class="grid grid-cols-2 gap-3 px-3 mt-10">
+<div class="border rounded-2xl p-4"><div class="flex gap-2 items-center"><div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center font-bold">B</div><span class="text-gray-500 font-bold">BNB</span></div><p class="font-black text-xl mt-2">724.08</p><p class="text-green-500 text-sm">▲ 1.78%</p></div>
+<div class="border rounded-2xl p-4"><div class="flex gap-2 items-center"><div class="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white text-xs font-bold">S</div><span class="text-gray-500 font-bold">SOL</span></div><p class="font-black text-xl mt-2">99.84</p><p class="text-green-500 text-sm">▲ 2.64%</p></div>
+</div>
+<div class="px-3 mt-6 flex gap-6 text-sm font-bold border-b"><span class="pb-3 border-b-2 border-black">Discover</span><span class="text-gray-400">Following</span><span class="text-gray-400">Stocks</span><span class="text-gray-400">Campaign</span></div>
+</div>
+
+<div id="app" class="hidden">
+<div id="page-home">
+<div class="p-3 flex justify-between border-b"><div class="flex gap-2 items-center"><div class="w-8 h-8 bY rounded flex items-center justify-center font-black">Z</div><b class="text-[#F0B90B]">ZALAGO44</b></div><span class="text-xs bg-black text-white px-3 py-1 rounded-full">GHS</span></div>
+<div class="bg-[#1E2329] text-white m-3 p-4 rounded-xl"><p class="text-xs text-gray-400">Total Assets</p><h1 class="text-2xl font-bold">19,007.60 GHS</h1><div class="grid grid-cols-4 gap-2 mt-3 text-[11px] text-center"><div class="bg-[#2B3139] p-2 rounded-lg">Deposit</div><div class="bg-[#2B3139] p-2 rounded-lg">Withdraw</div><div onclick="showP('trade')" class="bg-[#2B3139] p-2 rounded-lg">Trade</div><div onclick="showP('p2p')" class="bg-[#2B3139] p-2 rounded-lg">P2P</div></div></div>
+<div class="px-3"><div class="flex justify-between"><h3 class="font-bold">P2P Trading Inside</h3><span class="text-xs text-yellow-600" onclick="showP('p2p')">View All ></span></div><div id="p2p-home" class="mt-2"></div></div>
+<div class="px-3 mt-4"><h3 class="font-bold text-sm">Markets</h3><div id="markets-home"></div></div>
+</div>
+<div id="page-markets" class="hidden p-3"><h2 class="font-bold">Markets</h2><div id="markets-list" class="mt-3"></div></div>
+<div id="page-trade" class="hidden bg-[#0B0E11] text-white h-screen"><div class="p-2 font-bold">BTC/USDT <span class="text-green-400">68,420 +2.3%</span></div><canvas id="chart" class="w-full h-48 bg-black"></canvas><div class="grid grid-cols-2 gap-2 p-3"><button class="bg-green-500 py-3 rounded font-bold">Buy</button><button class="bg-red-500 py-3 rounded font-bold">Sell</button></div></div>
+<div id="page-futures" class="hidden p-10 text-center"><h2 class="font-black text-xl">Futures</h2><p class="text-gray-500">125x Leverage</p></div>
+<div id="page-p2p" class="hidden p-3"><div class="flex gap-2 mb-3"><button onclick="showP('home')" class="text-xl">←</button><h2 class="font-bold">P2P Trading</h2></div><div id="p2p-full"></div></div>
+<div id="page-assets" class="hidden p-3 pb-32">
+<h2 class="font-black text-lg">My Assets</h2>
+<div class="bg-[#1E2329] text-white p-3 rounded-xl mt-3"><p class="text-xs text-gray-400">Spot Wallet</p><p class="font-bold">1,250.50 USDT</p></div>
+<div class="border rounded-xl p-4 mt-4"><div class="flex justify-between"><h3 class="font-bold text-sm">🔐 Authentication</h3><span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded">Not Verified</span></div><div class="mt-3 space-y-2"><label class="border-2 border-dashed rounded-xl p-4 flex flex-col items-center bg-gray-50"><i class="fa-solid fa-camera"></i><span class="text-xs">Ghana Card Front</span><input type="file" class="hidden"></label><label class="border-2 border-dashed rounded-xl p-4 flex flex-col items-center bg-gray-50"><i class="fa-solid fa-camera"></i><span class="text-xs">Ghana Card Back</span><input type="file" class="hidden"></label><label class="border-2 border-dashed border-yellow-400 rounded-xl p-4 flex flex-col items-center bg-yellow-50"><i class="fa-solid fa-camera text-yellow-600"></i><span class="text-xs font-bold">Selfie Holding Ghana Card</span><input type="file" class="hidden"></label></div><button class="w-full bY py-3 rounded-xl font-bold mt-3">Submit Verification</button></div>
+<div class="border rounded-xl p-4 mt-3"><h3 class="font-bold text-sm">👥 Invite Friends</h3><div class="bg-black text-white p-3 rounded-lg flex justify-between mt-2"><span class="text-xs">Code: <b class="text-yellow-400">VAA</b></span><button class="text-xs bg-white text-black px-3 py-1 rounded">Copy</button></div></div>
+<div class="border rounded-xl p-4 mt-3"><h3 class="font-bold text-sm">📱 Download App</h3><div class="grid grid-cols-2 gap-2 mt-2"><button class="border py-3 rounded-xl text-xs font-bold">Android APK</button><button class="border py-3 rounded-xl text-xs font-bold">iOS</button></div></div>
+<div class="border rounded-xl p-4 mt-3 bg-[#FFFBEB]"><h3 class="font-bold text-sm">🎧 Customer Service</h3><p class="text-xs text-gray-500 mt-1">We're Online 24/7 - Always here to help</p><div class="flex items-center gap-2 mt-2"><div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div><span class="text-xs text-green-600 font-bold">Online - Reply in 2 minutes</span></div><button onclick="document.getElementById('chat').classList.remove('hidden')" class="w-full bY py-3 rounded-xl font-bold mt-3">💬 Chat With Support</button></div>
+</div>
+
+<!-- CHAT EXACT LIKE BINANCE SCREENSHOT - YOUR IMAGE -->
+<div id="chat" class="hidden fixed inset-0 bg-[#F5F5F5] z-[100] flex flex-col">
+<div class="bg-white p-3 flex items-center gap-3 border-b">
+<button onclick="document.getElementById('chat').classList.add('hidden')" class="text-xl w-8"><i class="fa-solid fa-arrow-left"></i></button>
+<div class="w-10 h-10 bg-[#FCD535] rounded-lg flex items-center justify-center"><i class="fa-solid fa-face-smile text-lg"></i></div>
+<div class="flex-1">
+<p class="font-bold text-[16px] leading-tight">ZALAGO44 Support</p>
+<p class="text-xs text-gray-500">Ask me anything</p>
+</div>
+<i class="fa-solid fa-globe text-xl text-gray-600"></i>
+</div>
+<div class="bg-[#F5F5F5] p-4 flex justify-center"><span class="text-sm text-gray-500"><i class="fa-solid fa-arrow-up text-[10px]"></i> View Chat History</span></div>
+<div class="flex-1 bg-[#F5F5F5] p-4" id="chatBox">
+<div class="bg-white rounded-2xl rounded-tl-sm p-4 shadow-sm max-w-[85%]"><p class="text-[15px]"><span class="text-lg">👋</span> Welcome to ZALAGO44 Support. How can I help you today?</p></div>
+</div>
+<div class="bg-[#F5F5F5] p-3 flex items-center gap-3 pb-6">
+<button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm"><i class="fa-solid fa-plus text-xl"></i></button>
+<div class="flex-1 bg-white rounded-full px-5 py-3 shadow-sm flex items
