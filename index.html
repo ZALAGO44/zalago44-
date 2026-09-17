@@ -21,9 +21,9 @@ body{background:#0B0E11;color:#fff}
 .nav div{color:#848E9C;font-size:11px;text-align:center}
 .nav div.active{color:#FCD535}
 .ticker{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #2B3139}
-.price{font-size:32px;font-weight:900}
-.chart{height:120px;background:#0B0E11;border-radius:8px;position:relative;overflow:hidden;margin:10px 0;border:1px solid #2B3139}
-.line{position:absolute;bottom:0;width:100%;height:2px;background:#FCD535}
+.price{font-size:34px;font-weight:900}
+.trade-card{display:flex;justify-content:space-between;align-items:center;background:#2B3139;padding:12px;border-radius:10px;margin:8px 0}
+.close-btn{background:#F6465D;color:#fff;border:none;padding:8px 16px;border-radius:6px;font-weight:bold}
 </style>
 </head>
 <body>
@@ -41,8 +41,8 @@ body{background:#0B0E11;color:#fff}
 </div>
 
 <div id="home-page" class="page">
-<div class="card" style="background:linear-gradient(135deg,#FCD535,#F0B90B);color:#000"><h3>Demo Balance</h3><h1 id="bal1">$1,000.00</h1><p id="pnl1" style="font-size:13px">P/L: +$0.00</p></div>
-<div class="card"><h3>Markets LIVE</h3><div class="ticker"><span>BTC/USDT</span><span id="btcPrice1">$68,245.00</span><span id="btcChange1" style="color:#0ECB81">+2.5%</span></div></div>
+<div class="card" style="background:linear-gradient(135deg,#FCD535,#F0B90B);color:#000"><h3>Demo Balance</h3><h1 id="bal1">$1,000.00</h1><p id="pnl1" style="font-size:13px">Total P/L: +$0.00</p></div>
+<div class="card"><h3>Markets LIVE</h3><div class="ticker"><span>BTC/USDT</span><span id="btcPrice1">$68,245.00</span></div></div>
 <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">🚀 Trade For Real & Earn USDC</a>
 </div>
 
@@ -50,23 +50,24 @@ body{background:#0B0E11;color:#fff}
 
 <div id="trade-page" class="page">
 <div class="card">
-<div style="display:flex;justify-content:space-between"><h3>BTC/USDT</h3><span style="color:#FCD535">Paper</span></div>
+<div style="display:flex;justify-content:space-between"><h3>BTC/USDT • 15m</h3><span style="color:#FCD535">Paper</span></div>
 <div class="price" id="livePrice">$68,245.00</div>
-<div id="liveChange" style="color:#0ECB81">+$125.50 (+0.18%) LIVE</div>
-<canvas id="c" width="350" height="120" style="width:100%;background:#0B0E11;border-radius:8px;margin:10px 0;border:1px solid #2B3139"></canvas>
+<div id="liveChange" style="color:#0ECB81">+$0.00 LIVE • Real Chart</div>
+<canvas id="c" width="350" height="280" style="width:100%;height:280px;background:#0B0E11;border-radius:10px;margin:12px 0;border:1px solid #2B3139"></canvas>
 <div style="display:flex;gap:10px">
 <button class="btn" style="background:#0ECB81;color:#fff" onclick="doTrade('BUY')">BUY / LONG</button>
 <button class="btn" style="background:#F6465D;color:#fff" onclick="doTrade('SELL')">SELL / SHORT</button>
 </div>
-<p style="text-align:center;margin-top:10px;color:#848E9C;font-size:12px">Balance: <span class="bal">$1,000.00</span> | Use demo to trade</p>
-<div id="openTrades" style="margin-top:10px"></div>
+<p style="text-align:center;margin-top:12px;color:#848E9C;font-size:13px">Balance: <span class="bal">$1,000.00</span></p>
+<h4 style="margin-top:15px">Open Positions - Click CLOSE to Cash Out</h4>
+<div id="openTrades"></div>
 <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">💰 Get REAL Money - Binance</a>
 </div>
 </div>
 
-<div id="assets-page" class="page"><div class="card"><h3>My Assets (Demo)</h3><h1 class="bal">$1,000.00</h1><p id="assetPnl" style="color:#848E9C">Open P/L: $0.00</p></div><div class="card"><a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">💰 Withdraw Real GHS - Binance</a></div></div>
+<div id="assets-page" class="page"><div class="card"><h3>My Assets (Demo)</h3><h1 class="bal">$1,000.00</h1><p id="assetPnl" style="color:#848E9C">Total P/L: $0.00</p></div><div class="card"><a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">💰 Withdraw Real GHS - Binance</a></div></div>
 
-<div id="profile-page" class="page"><div class="card"><h3>KYC (Demo)</h3><input class="input" placeholder="Full Name"><button class="btn" style="background:#2B3139;color:#fff" onclick="showPage('register-page')">Logout</button></div></div>
+<div id="profile-page" class="page"><div class="card"><h3>Profile</h3><button class="btn" style="background:#2B3139;color:#fff" onclick="showPage('register-page')">Logout</button></div></div>
 
 <div class="nav" id="bottomNav">
 <div id="nav-home" class="active" onclick="showPage('home-page')">🏠<br>Home</div>
@@ -77,7 +78,8 @@ body{background:#0B0E11;color:#fff}
 </div>
 
 <script>
-let price=68245.00,balance=1000,positions=[],history=[];
+let price=68245,balance=1000,positions=[],history=[],candles=[];
+for(let i=0;i<80;i++)candles.push(68245+(Math.random()-0.5)*200);
 let canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
 function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -86,50 +88,70 @@ let nav=document.getElementById('bottomNav'),btn=document.getElementById('topBtn
 if(id==='register-page'){nav.classList.remove('show');btn.style.display='none';}else{nav.classList.add('show');btn.style.display='block';}
 }
 function updatePrice(){
-let change=(Math.random()-0.48)*30;
+let change=(Math.random()-0.48)*25;
 price+=change;
-if(history.length>60)history.shift();
-history.push(price);
+candles.shift();candles.push(price);
 document.getElementById('livePrice').innerText='$'+price.toFixed(2);
 document.getElementById('btcPrice1').innerText='$'+price.toFixed(2);
 document.getElementById('btcPrice2').innerText='$'+price.toFixed(2);
 let ch=document.getElementById('liveChange');
-ch.innerText=(change>0?'+':'')+change.toFixed(2)+' LIVE';
+ch.innerText=(change>0?'+':'')+change.toFixed(2)+' LIVE • Real Chart';
 ch.style.color=change>0?'#0ECB81':'#F6465D';
-drawChart();
-updatePnL();
+drawChart();updatePnL();
 }
 function drawChart(){
-ctx.clearRect(0,0,350,120);
-if(history.length<2)return;
-let min=Math.min(...history),max=Math.max(...history),range=max-min||1;
-ctx.beginPath();ctx.strokeStyle='#FCD535';ctx.lineWidth=2;
-history.forEach((p,i)=>{
-let x=i*(350/history.length),y=120-((p-min)/range*100)-10;
+ctx.clearRect(0,0,350,280);
+let min=Math.min(...candles),max=Math.max(...candles),range=max-min||1;
+// grid
+ctx.strokeStyle='#1E2329';ctx.lineWidth=1;
+for(let i=0;i<4;i++){ctx.beginPath();ctx.moveTo(0,i*70);ctx.lineTo(350,i*70);ctx.stroke();}
+// big yellow line
+ctx.beginPath();ctx.strokeStyle='#FCD535';ctx.lineWidth=3;
+candles.forEach((p,i)=>{
+let x=i*(350/candles.length),y=260-((p-min)/range*220);
 if(i==0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
 });
 ctx.stroke();
+// glow fill
+ctx.lineTo(350,280);ctx.lineTo(0,280);ctx.closePath();
+let grad=ctx.createLinearGradient(0,0,0,280);grad.addColorStop(0,'rgba(252,213,53,0.3)');grad.addColorStop(1,'rgba(252,213,53,0)');
+ctx.fillStyle=grad;ctx.fill();
 }
 function doTrade(type){
-let entry=price;
-positions.push({type,entry,amount:100});
-document.getElementById('openTrades').innerHTML=positions.map((p,i)=>`<div class="card" style="margin:5px 0;padding:10px;font-size:12px">${p.type} $${p.entry.toFixed(2)} - Live P/L: <span id="pl${i}">$0</span></div>`).join('');
+positions.push({type,entry:price,amount:100,id:Date.now()});
+renderTrades();
+}
+function renderTrades(){
+document.getElementById('openTrades').innerHTML=positions.map((p,i)=>`
+<div class="trade-card">
+<div><b style="color:${p.type=='BUY'?'#0ECB81':'#F6465D'}">${p.type}</b> $${p.entry.toFixed(2)}<br><small id="pl${i}" style="font-weight:bold">$0.00</small></div>
+<button class="close-btn" onclick="closeTrade(${i})">CLOSE</button>
+</div>`).join('')||'<p style="color:#848E9C;font-size:12px;margin-top:8px">No open trades. Tap BUY or SELL</p>';
+}
+function closeTrade(idx){
+let p=positions[idx];
+let pl=p.type=='BUY'?(price-p.entry)*0.5:(p.entry-price)*0.5;
+balance+=pl;
+positions.splice(idx,1);
+renderTrades();
+updatePnL();
+alert('Closed! Profit: $'+pl.toFixed(2)+' added to balance');
 }
 function updatePnL(){
 let total=0;
 positions.forEach((p,i)=>{
-let pl=p.type=='BUY'?(price-p.entry)*0.1:(p.entry-price)*0.1;
+let pl=p.type=='BUY'?(price-p.entry)*0.5:(p.entry-price)*0.5;
 total+=pl;
 let el=document.getElementById('pl'+i);
-if(el){el.innerText='$'+pl.toFixed(2);el.style.color=pl>=0?'#0ECB81':'#F6465D';}
+if(el){el.innerText=(pl>=0?'+$':'-$')+Math.abs(pl).toFixed(2)+' Live';el.style.color=pl>=0?'#0ECB81':'#F6465D';}
 });
 document.querySelectorAll('.bal').forEach(e=>e.innerText='$'+(balance+total).toFixed(2));
 document.getElementById('bal1').innerText='$'+(balance+total).toFixed(2);
-let pnl=document.getElementById('pnl1');if(pnl){pnl.innerText='P/L: '+(total>=0?'+':'')+'$'+total.toFixed(2);pnl.style.color=total>=0?'#0ECB81':'#F6465D';}
-document.getElementById('assetPnl').innerText='Open P/L: $'+total.toFixed(2);
+document.getElementById('pnl1').innerText='Total P/L: '+(total>=0?'+':'')+'$'+total.toFixed(2);
+document.getElementById('assetPnl').innerText='Total P/L: $'+total.toFixed(2)+' | Balance: $'+balance.toFixed(2);
 }
-setInterval(updatePrice,800);
-updatePrice();
+setInterval(updatePrice,700);
+renderTrades();drawChart();
 </script>
 </body>
 </html>
