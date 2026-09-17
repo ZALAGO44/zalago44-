@@ -1,12 +1,126 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZALAGO44</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}body{background:#fff}.btn{background:#FCD535;border:none;border-radius:12px;padding:14px;width:100%;font-weight:700}.input{width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;margin-bottom:10px}.page{display:none;min-height:100vh;padding-bottom:70px}.page.active{display:block}.header{display:flex;justify-content:space-between;padding:12px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff}.logo{width:48px;height:48px;background:#FCD535;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px}.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:8px 0;border-top:1px solid #eee}.tab{display:flex;background:#f5f5f5;border-radius:12px;padding:4px;margin-bottom:12px}.tab button{flex:1;padding:10px;border:none;background:transparent;border-radius:8px}.tab button.active{background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.1)}.popup{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:99}.popup.show{display:flex}.card{background:#fff;border-radius:20px;padding:24px;width:90%;max-width:320px;text-align:center}</style></head><body>
-<div id="registerPage" class="page active" style="padding:20px"><div style="text-align:center;padding:20px 0"><div class="logo" style="margin:0 auto 12px;width:64px;height:64px;font-size:28px">Z</div><h1>ZALAGO44</h1><p style="color:#888">Ghana's #1 Trading Platform</p></div><h2>Register</h2><div class="tab"><button id="t1" class="active" onclick="document.getElementById('e').style.display='block';document.getElementById('p').style.display='none';this.classList.add('active');document.getElementById('t2').classList.remove('active')">Email</button><button id="t2" onclick="document.getElementById('p').style.display='block';document.getElementById('e').style.display='none';this.classList.add('active');document.getElementById('t1').classList.remove('active')">Phone</button></div><div id="e"><input class="input" placeholder="Email"><div style="display:flex;gap:8px"><input class="input" placeholder="Verification Code" style="flex:1"><button onclick="this.innerText='123456';alert('Code: 123456')" style="padding:14px;border:none;background:#f5f5f5;border-radius:12px">Send code</button></div></div><div id="p" style="display:none"><div style="display:flex;gap:8px"><select class="input" style="width:110px"><option>+233 GH</option><option>+234 NG</option><option>+27 SA</option><option>+1 US</option><option>+44 UK</option></select><input class="input" placeholder="Phone" style="flex:1"></div><div style="display:flex;gap:8px"><input class="input" placeholder="SMS Code" style="flex:1"><button onclick="this.innerText='123456';alert('Code: 123456')" style="padding:14px;border:none;background:#f5f5f5;border-radius:12px">Send code</button></div></div><input class="input" id="p1" type="password" placeholder="Password"><input class="input" id="p2" type="password" placeholder="Confirm Password"><input class="input" placeholder="Referral Code" value="VAA"><button class="btn" onclick="if(document.getElementById('p1').value!=document.getElementById('p2').value){alert('Passwords not match!')}else{show('homePage')}">Register</button></div>
-<div id="homePage" class="page"><div class="header"><div style="display:flex;gap:8px;align-items:center"><div class="logo">Z</div><b>ZALAGO44</b></div><div style="display:flex;gap:10px"><button onclick="showPop()" style="background:#FCD535;border:none;padding:6px 12px;border-radius:8px;font-weight:700">📥 APP</button><span onclick="show('profilePage')">☰</span></div></div><div style="padding:16px"><div style="background:#FCD535;border-radius:16px;padding:20px"><h3>Welcome to ZALAGO44</h3><p>Trade Crypto, Forex</p><br><button class="btn" style="background:#000;color:#FCD535;width:auto" onclick="show('tradePage')">Start Trading</button></div><br><button class="btn" onclick="show('kycPage')">🔐 Verify KYC</button></div></div>
-<div id="marketsPage" class="page"><div class="header"><b>Markets</b><button onclick="showPop()" style="background:#FCD535;border:none;padding:6px 12px;border-radius:8px">📥 APP</button></div><div style="padding:16px">BTC/USDT +2.4%<br>ETH/USDT +1.2%</div></div>
-<div id="tradePage" class="page"><div class="header"><b>Trade</b><button onclick="showPop()" style="background:#FCD535;border:none;padding:6px 12px;border-radius:8px">📥 APP</button></div><div style="padding:16px"><button class="btn">Buy/Sell</button></div></div>
-<div id="futuresPage" class="page"><div class="header"><b>Futures</b><button onclick="showPop()" style="background:#FCD535;border:none;padding:6px 12px;border-radius:8px">📥 APP</button></div><div style="padding:16px">Futures 125x</div></div>
-<div id="assetsPage" class="page"><div class="header"><b>Assets</b><button onclick="showPop()" style="background:#FCD535;border:none;padding:6px 12px;border-radius:8px">📥 APP</button></div><div style="padding:16px"><div style="background:#000;color:#fff;border-radius:16px;padding:20px"><p>Balance</p><h2>$0.00</h2></div><br><button class="btn" onclick="show('kycPage')">Verify KYC</button></div></div>
-<div id="kycPage" class="page"><div class="header"><span onclick="show('homePage')">←Back</span><b>Authentication</b><span></span></div><div style="padding:16px"><h3>Identity Verification</h3><br><label>Country</label><select class="input"><option>🇬🇭 Ghana</option><option>🇳🇬 Nigeria</option><option>🇿🇦 South Africa</option><option>🇰🇪 Kenya</option><option>🇺🇸 USA</option><option>🇬🇧 UK</option><option>🇮🇳 India</option><option>Other</option></select><input class="input" placeholder="Full Name"><input class="input" placeholder="ID Number"><select class="input"><option>Ghana Card</option><option>Passport</option><option>Driver License</option></select><button class="btn" onclick="alert('KYC Submitted!')">Submit</button></div></div>
-<div id="profilePage" class="page"><div class="header"><span onclick="show('homePage')">←Back</span><b>Profile</b><span></span></div><div style="padding:16px"><p>vifahasiwome@gmail.com</p><br><button class="btn" onclick="show('kycPage')">KYC Verification</button><br><br><button style="width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;background:#fff" onclick="show('registerPage')">Logout</button></div></div>
-<div id="bottom" class="bottom" style="display:none"><div onclick="show('homePage')">⌂<br>Home</div><div onclick="show('marketsPage')">📊<br>Markets</div><div onclick="show('tradePage')">↗<br>Trade</div><div onclick="show('futuresPage')">📈<br>Futures</div><div onclick="show('assetsPage')">💼<br>Assets</div></div>
-<div id="pop" class="popup" onclick="hidePop()"><div class="card" onclick="event.stopPropagation()"><div class="logo" style="margin:0 auto 12px">Z</div><h3>Install ZALAGO44</h3><p style="color:#888;margin:8px 0 16px;font-size:14px">Add to Home Screen - Works like Play Store!</p><button class="btn" onclick="alert('Android: Chrome menu ⋮ > Add to Home screen\n\niPhone: Share ⬆️ > Add to Home Screen');hidePop()">Install App Now</button><p style="margin-top:10px;color:#888;font-size:12px" onclick="hidePop()">Maybe later</p></div></div>
-<script>function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('bottom').style.display=(id=='registerPage'||id=='kycPage'||id=='profilePage')?'none':'flex';window.scrollTo(0,0)}function showPop(){document.getElementById('pop').classList.add('show')}function hidePop(){document.getElementById('pop').classList.remove('show')}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZALAGO44 - Trade Crypto</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0B0E11;color:#fff}
+.header{display:flex;justify-content:space-between;align-items:center;padding:12px 15px;background:#181A20;position:sticky;top:0;z-index:10}
+.logo{color:#FCD535;font-weight:900;font-size:22px}
+.app-btn{background:#FCD535;color:#000;padding:6px 12px;border-radius:6px;font-weight:bold;font-size:13px;border:none;cursor:pointer}
+.page{display:none;padding:15px;padding-bottom:80px;min-height:80vh}
+.page.active{display:block}
+.card{background:#1E2329;border-radius:12px;padding:15px;margin:10px 0}
+.input{width:100%;padding:14px;background:#2B3139;border:none;border-radius:8px;color:#fff;margin:8px 0;font-size:16px}
+.btn{width:100%;padding:14px;background:#FCD535;color:#000;border:none;border-radius:8px;font-weight:bold;font-size:16px;cursor:pointer;margin-top:10px}
+.btn2{display:block;margin:15px;padding:16px;background:#FCD535;color:#000;text-align:center;font-weight:bold;border-radius:12px;text-decoration:none}
+.nav{position:fixed;bottom:0;width:100%;background:#181A20;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #2B3139}
+.nav div{color:#848E9C;font-size:11px;text-align:center;cursor:pointer}
+.nav div.active{color:#FCD535}
+.ticker{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #2B3139}
+.green{color:#0ECB81}.red{color:#F6465D}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo">ZALAGO44</div>
+<button class="app-btn" onclick="showApp()">📥 APP</button>
+</div>
+
+<div id="register-page" class="page active">
+<div class="card">
+<h2 style="color:#FCD535">Welcome to ZALAGO44</h2>
+<p style="color:#848E9C;margin:8px 0">Trade like Binance</p>
+<select class="input"><option>🇬🇭 Ghana +233</option><option>🇳🇬 Nigeria +234</option><option>🇺🇸 USA +1</option><option>🇬🇧 UK +44</option></select>
+<input class="input" id="email" placeholder="Email / Phone">
+<input class="input" type="password" placeholder="Password">
+<button class="btn" onclick="doRegister()">Create Account - Get $1000 Demo</button>
+<p style="text-align:center;margin-top:12px;color:#848E9C">Already have? <span style="color:#FCD535" onclick="showPage('login-page')">Login</span></p>
+</div>
+</div>
+
+<div id="login-page" class="page">
+<div class="card">
+<h2>Login</h2>
+<input class="input" placeholder="Email">
+<input class="input" type="password" placeholder="Password">
+<button class="btn" onclick="showPage('home-page')">Login</button>
+<p style="text-align:center;margin-top:12px;color:#848E9C">No account? <span style="color:#FCD535" onclick="showPage('register-page')">Register</span></p>
+</div>
+</div>
+
+<div id="home-page" class="page">
+<div class="card" style="background:linear-gradient(135deg,#FCD535,#F0B90B);color:#000">
+<h3>Demo Balance</h3><h1>$1,000.00</h1><p>Paper trading</p>
+</div>
+<div class="card"><h3>Markets</h3>
+<div class="ticker"><span>BTC/USDT</span><span>$68,245 <span class="green">+2.5%</span></span></div>
+<div class="ticker"><span>ETH/USDT</span><span>$3,890 <span class="green">+1.2%</span></span></div>
+<div class="ticker"><span>BNB/USDT</span><span>$605 <span class="red">-0.5%</span></span></div>
+</div>
+</div>
+
+<div id="markets-page" class="page">
+<div class="card"><h3>Markets</h3>
+<div class="ticker"><span>BTC/USDT</span><span>$68,245</span></div>
+<div class="ticker"><span>ETH/USDT</span><span>$3,890</span></div>
+</div>
+</div>
+
+<div id="trade-page" class="page">
+<div class="card">
+<h3>BTC/USDT Trade - Paper</h3>
+<p style="color:#848E9C">Balance: $1,000 Demo</p>
+<button class="btn" style="background:#0ECB81;color:#fff;margin-top:15px" onclick="alert('BUY Placed Demo')">BUY / LONG</button>
+<button class="btn" style="background:#F6465D;color:#fff" onclick="alert('SELL Placed Demo')">SELL / SHORT</button>
+<a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="btn2">🚀 Trade For Real & Get $10 Bonus</a>
+<p style="text-align:center;color:#888;font-size:12px">Redirect to licensed partner - you earn commission</p>
+</div>
+</div>
+
+<div id="assets-page" class="page">
+<div class="card"><h3>My Assets (Demo)</h3><h1>$1,000.00</h1></div>
+<div class="card">
+<a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="btn2">💰 Withdraw Real GHS - Partner</a>
+</div>
+</div>
+
+<div id="profile-page" class="page">
+<div class="card"><h3>KYC Verification</h3>
+<select class="input"><option>Ghana</option><option>Nigeria</option><option>Other</option></select>
+<input class="input" placeholder="Full Name">
+<input class="input" placeholder="Ghana Card Number">
+<button class="btn" onclick="alert('KYC Submitted Demo')">Submit KYC</button>
+</div>
+</div>
+
+<div class="nav">
+<div id="nav-home" class="active" onclick="showPage('home-page')">🏠<br>Home</div>
+<div id="nav-markets" onclick="showPage('markets-page')">📈<br>Markets</div>
+<div id="nav-trade" onclick="showPage('trade-page')">💱<br>Trade</div>
+<div id="nav-assets" onclick="showPage('assets-page')">💼<br>Assets</div>
+<div id="nav-profile" onclick="showPage('profile-page')">👤<br>Profile</div>
+</div>
+
+<script>
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('.nav div').forEach(n=>n.classList.remove('active'));
+let map={'home-page':'nav-home','markets-page':'nav-markets','trade-page':'nav-trade','assets-page':'nav-assets','profile-page':'nav-profile'};
+if(map[id]) document.getElementById(map[id]).classList.add('active');
+}
+function doRegister(){
+let e=document.getElementById('email').value;
+if(e.length<3){alert('Enter email');return}
+alert('Account created! $1000 Demo credited');
+showPage('home-page');
+}
+function showApp(){
+alert('📥 APP: On Android tap 3 dots > Add to Home Screen / Install App');
+}
+</script>
+</body>
+  </html>
