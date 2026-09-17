@@ -1,115 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZALAGO44</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FCD535">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>ZALAGO44 - REAL 3D PLATFORM</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#0B0E11;color:#fff}
-.header{display:flex;justify-content:space-between;padding:12px;background:#181A20;position:sticky;top:0;z-index:10}
-.logo{color:#FCD535;font-weight:900;font-size:22px}
-.app-btn{background:#FCD535;color:#000;padding:6px 12px;border-radius:6px;font-weight:bold;border:none;display:none}
-.page{display:none;padding:15px;padding-bottom:90px;min-height:85vh}
-.page.active{display:block}
-.card{background:#1E2329;border-radius:12px;padding:15px;margin:10px 0}
-.input{width:100%;padding:14px;background:#2B3139;border:none;border-radius:8px;color:#fff;margin:8px 0;font-size:16px}
-.btn{width:100%;padding:14px;background:#FCD535;color:#000;border:none;border-radius:8px;font-weight:bold;font-size:16px;margin-top:10px;cursor:pointer}
-.btn2{display:block;margin:15px 0;padding:16px;background:#FCD535;color:#000;text-align:center;font-weight:bold;border-radius:12px;text-decoration:none}
-.nav{position:fixed;bottom:0;width:100%;background:#181A20;display:none;justify-content:space-around;padding:10px 0;border-top:1px solid #2B3139;z-index:20}
-.nav.show{display:flex}
-.nav div{color:#848E9C;font-size:11px;text-align:center}
-.nav div.active{color:#FCD535}
-.ticker{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #2B3139}
-.price{font-size:34px;font-weight:900}
-.trade-card{display:flex;justify-content:space-between;align-items:center;background:#2B3139;padding:12px;border-radius:10px;margin:8px 0}
-.close-btn{background:#F6465D;color:#fff;border:none;padding:8px 16px;border-radius:6px;font-weight:bold}
+body{background:#0e0e0e;color:#fff;overflow:hidden}
+.top{background:linear-gradient(180deg,#FFD600,#e6c000);color:#000;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;font-weight:900;font-size:22px;box-shadow:0 4px 15px rgba(255,214,0,.4)}
+.appbtn{background:#000;color:#FFD600;padding:6px 14px;border-radius:8px;font-size:12px}
+.live{color:#ff4d4d;padding:10px 15px;font-weight:bold;display:flex;justify-content:space-between}
+.chartbox{margin:0 12px;background:radial-gradient(circle at center,#1a1a1a,#000);border-radius:18px;padding:10px;height:300px;position:relative;border:1px solid #333;box-shadow:inset 0 0 30px #000, 0 8px 20px rgba(0,0,0,.8)}
+canvas{width:100%;height:100%}
+.btns{display:flex;gap:10px;padding:12px}
+.b{background:linear-gradient(180deg,#00e676,#00a651);color:white;border:none;flex:1;padding:16px;border-radius:14px;font-weight:900;font-size:15px;box-shadow:0 4px 10px rgba(0,230,118,.4)}
+.s{background:linear-gradient(180deg,#ff5252,#c00);color:white;border:none;flex:1;padding:16px;border-radius:14px;font-weight:900;font-size:15px;box-shadow:0 4px 10px rgba(255,82,82,.4)}
+.bal{text-align:center;color:#aaa;font-size:13px;margin:4px 0}
+.tab{display:none;height:calc(100vh - 110px);overflow-y:auto;padding-bottom:80px}
+.tab.a{display:block}
+.card{background:#1c1c1c;margin:10px;border-radius:14px;padding:12px;border:1px solid #2a2a2a;box-shadow:0 4px 12px rgba(0,0,0,.5)}
+.row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #222}
+.small{color:#888;font-size:12px}
+.btnY{background:#FFD600;color:#000;border:none;width:100%;padding:13px;border-radius:10px;font-weight:900;margin-top:8px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#151515;display:flex;justify-content:space-around;padding:8px 0 12px;border-top:1px solid #222;z-index:5}
+.nav div{text-align:center;font-size:11px;color:#666;width:20%;padding:5px}
+.nav .on{color:#FFD600}
+.auth{position:fixed;inset:0;background:#0e0e0e;z-index:20;display:flex;align-items:center;justify-content:center;padding:20px}
+.auth .card{width:100%;max-width:360px;background:#1a1a1a;border-radius:18px;box-shadow:0 10px 40px #000}
+.auth input{width:100%;padding:13px;margin:6px 0;border-radius:10px;border:none;background:#222;color:white}
 </style>
 </head>
 <body>
-<div class="header"><div class="logo">ZALAGO44</div><button class="app-btn" id="topBtn" onclick="installApp()">📥 APP</button></div>
-<div id="register-page" class="page active">
-<div class="card">
-<h2 style="color:#FCD535">Welcome to ZALAGO44</h2>
-<p style="color:#848E9C;margin:8px 0">Demo $1000 - Learn Trading like Binance</p>
-<select class="input"><option>🇬🇭 Ghana +233</option><option>🇳🇬 Nigeria +234</option></select>
-<input class="input" placeholder="Email / Phone">
-<input class="input" type="password" placeholder="Password">
-<button class="btn" onclick="showPage('home-page')">Create Account - Get $1000 Demo</button>
+
+<div class="auth" id="auth">
+<div class="card" id="regCard">
+<h2 style="color:#FFD600;text-align:center">ZALAGO44</h2>
+<p class="small" style="text-align:center;margin:5px 0 10px">Register new account</p>
+<input id="email" placeholder="Email address">
+<div style="display:flex;gap:8px"><input id="code" placeholder="Verification code" style="flex:1"><button onclick="sendCode()" style="background:#333;color:#FFD600;border:none;padding:0 14px;border-radius:10px;font-weight:bold">Send Code</button></div>
+<input id="p1" type="password" placeholder="Password">
+<input id="p2" type="password" placeholder="Confirm Password">
+<button class="btnY" onclick="register()">REGISTER</button>
+<p class="small" style="text-align:center;margin-top:12px">I already have an account? <span onclick="showLogin()" style="color:#FFD600;text-decoration:underline;font-weight:bold">Log in</span></p>
+</div>
+<div class="card" id="logCard" style="display:none">
+<h2 style="color:#FFD600;text-align:center">ZALAGO44</h2>
+<p class="small" style="text-align:center;margin:5px 0 10px">Welcome back</p>
+<input id="le" placeholder="Email address">
+<input id="lp" type="password" placeholder="Password">
+<button class="btnY" onclick="login()">LOG IN</button>
+<p class="small" style="text-align:center;margin-top:12px">Don't have account? <span onclick="showReg()" style="color:#FFD600;text-decoration:underline;font-weight:bold">Register</span></p>
 </div>
 </div>
-<div id="home-page" class="page">
-<div class="card" style="background:linear-gradient(135deg,#FCD535,#F0B90B);color:#000"><h3>Demo Balance</h3><h1 id="bal1">$1,000.00</h1><p id="pnl1" style="font-size:13px">Total P/L: +$0.00</p></div>
-<div class="card"><h3>Markets LIVE</h3><div class="ticker"><span>BTC/USDT</span><span id="btcPrice1">$68,245.00</span></div></div>
-<a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">🚀 Trade For Real & Earn USDC</a>
+
+<div class="top"><span>ZALAGO44</span><span id="uTop" style="font-size:12px">CEO</span></div>
+
+<!-- HOME -->
+<div class="tab a" id="tHome">
+<div class="live"><span id="live">-2.14 LIVE • 3D CHART</span><span style="color:#FFD600" id="priceTop">$100.00</span></div>
+<div class="chartbox"><canvas id="c"></canvas></div>
+<div class="btns"><button class="b" onclick="trade('BUY')">BUY / LONG</button><button class="s" onclick="trade('SELL')">SELL / SHORT</button></div>
+<div class="bal" id="bal">Balance: $1038.39 • PnL: $0.00</div>
+<div class="card"><h3>Open Positions</h3><div id="openPos" class="small" style="margin-top:8px">No open trades. Tap BUY or SELL</div></div>
+<div class="card"><h3>CEO Profit (Your 2% Fee)</h3><p style="color:#FFD600;font-size:20px;font-weight:900" id="ceoProfit">GHS 0.00</p><p class="small">You earn on every trade</p></div>
 </div>
-<div id="markets-page" class="page"><div class="card"><h3>Markets</h3><div class="ticker"><span>BTC/USDT</span><span id="btcPrice2">$68,245</span></div><div class="ticker"><span>ETH/USDT</span><span>$3,890</span></div></div></div>
-<div id="trade-page" class="page">
-<div class="card">
-<div style="display:flex;justify-content:space-between"><h3>BTC/USDT • 15m</h3><span style="color:#FCD535">Paper</span></div>
-<div class="price" id="livePrice">$68,245.00</div>
-<div id="liveChange" style="color:#0ECB81">+$0.00 LIVE</div>
-<canvas id="c" width="350" height="280" style="width:100%;height:280px;background:#0B0E11;border-radius:10px;margin:12px 0;border:1px solid #2B3139"></canvas>
-<div style="display:flex;gap:10px">
-<button class="btn" style="background:#0ECB81;color:#fff" onclick="doTrade('BUY')">BUY / LONG</button>
-<button class="btn" style="background:#F6465D;color:#fff" onclick="doTrade('SELL')">SELL / SHORT</button>
-</div>
-<p style="text-align:center;margin-top:12px;color:#848E9C;font-size:13px">Balance: <span class="bal">$1,000.00</span></p>
-<h4 style="margin-top:15px">Open Positions - Click CLOSE</h4>
-<div id="openTrades"></div>
-<a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">💰 Get REAL Money - Binance</a>
+
+<!-- MARKETS -->
+<div class="tab" id="tMarkets">
+<div class="card"><h3>📈 Markets</h3>
+<div class="row"><div><b>BTC/USDT</b><br><small class="small">Bitcoin</small></div><div style="text-align:right"><b>$67,432</b><br><small style="color:#0f0">+2.34%</small></div></div>
+<div class="row"><div><b>ETH/USDT</b><br><small class="small">Ethereum</small></div><div style="text-align:right"><b>$3,210</b><br><small style="color:#0f0">+1.12%</small></div></div>
+<div class="row"><div><b>SOL/USDT</b><br><small class="small">Solana</small></div><div style="text-align:right"><b>$145.5</b><br><small style="color:#f00">-0.8%</small></div></div>
+<div class="row"><div><b>BNB/USDT</b><br><small class="small">Binance</small></div><div style="text-align:right"><b>$602</b><br><small style="color:#0f0">+0.45%</small></div></div>
 </div>
 </div>
-<div id="assets-page" class="page"><div class="card"><h3>My Assets (Demo)</h3><h1 class="bal">$1,000.00</h1><p id="assetPnl" style="color:#848E9C">Total P/L: $0.00</p></div><div class="card"><a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=en&ref=GRO_28502_CTMST&utm_source=referral_entrance" target="_blank" class="btn2">💰 Withdraw Real GHS - Binance</a></div></div>
-<div id="profile-page" class="page"><div class="card"><h3>Profile</h3><button class="btn" style="background:#2B3139;color:#fff" onclick="showPage('register-page')">Logout</button></div></div>
-<div class="nav" id="bottomNav">
-<div class="active" onclick="showPage('home-page')">🏠<br>Home</div>
-<div onclick="showPage('markets-page')">📈<br>Markets</div>
-<div onclick="showPage('trade-page')">💱<br>Trade</div>
-<div onclick="showPage('assets-page')">💼<br>Assets</div>
-<div onclick="showPage('profile-page')">👤<br>Profile</div>
+
+<!-- TRADE -->
+<div class="tab" id="tTrade">
+<div class="card"><h3>Trade History</h3><div id="history" class="small">No history yet</div></div>
+<div class="card"><h3>Open Positions</h3><div id="openPos2" class="small">Same as Home - Close from Home</div></div>
 </div>
+
+<!-- ASSETS -->
+<div class="tab" id="tAssets">
+<div class="card" style="background:linear-gradient(135deg,#1a1a1a,#2a2a00)"><h3>💼 Total Assets</h3><h1 id="totalA" style="color:#FFD600">$1038.39</h1><p class="small">≈ GHS 16,200.00</p><div style="display:flex;gap:8px;margin-top:12px"><button class="b" onclick="deposit()">Deposit</button><button class="s" onclick="withdraw()">Withdraw</button><button style="flex:1;background:#333;color:white;border:none;border-radius:14px;font-weight:900" onclick="transfer()">Transfer</button></div></div>
+<div class="card"><div class="row"><span>USDT</span><span id="usdtBal">0.00</span></div><div class="row"><span>GHS</span><span id="ghsBal">GHS 0.00</span></div><div class="row"><span>BTC</span><span>0.00000</span></div></div>
+</div>
+
+<!-- PROFILE -->
+<div class="tab" id="tProfile">
+<div class="card"><h3>👤 Profile</h3><p>Email: <b id="pEmail">-</b></p><p style="margin-top:8px">Status: <span style="color:#0f0">● Verified</span></p><p class="small" style="margin-top:8px">UID: 88443219</p><button class="btnY" onclick="window.open('https://www.binance.com/en/activity/referral-entry/CPA?ref=CPA_00T9K1KQF1','_blank')">🔗 Get REAL Money - Binance Link</button><button style="background:#222;color:#fff;border:none;width:100%;padding:12px;border-radius:10px;margin-top:10px" onclick="logout()">LOG OUT</button></div>
+<div class="card"><h3>Invite & Earn 40% Commission</h3><p class="small">Share your Binance referral link and earn when friends trade</p><p style="background:#222;padding:10px;border-radius:8px;margin-top:8px;font-size:12px;word-break:break-all">https://binance.com/ref/ZALAGO44</p></div>
+</div>
+
+<div class="nav">
+<div class="on" id="nHome" onclick="openTab('Home')">🏠<br>Home</div>
+<div id="nMarkets" onclick="openTab('Markets')">📈<br>Markets</div>
+<div id="nTrade" onclick="openTab('Trade')">🔄<br>Trade</div>
+<div id="nAssets" onclick="openTab('Assets')">💼<br>Assets</div>
+<div id="nProfile" onclick="openTab('Profile')">👤<br>Profile</div>
+</div>
+
 <script>
-let deferredPrompt=null;
-window.addEventListener('beforeinstallprompt',(e)=>{e.preventDefault();deferredPrompt=e;});
-function installApp(){
-if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>{deferredPrompt=null;});}
-else{alert('To install ZALAGO44:\n1. Tap 3 dots ⋮ top\n2. Tap Add to Home screen\nYour app will be on phone! 📱');}
-}
-let price=68245,balance=1000,positions=[],candles=[];
-for(let i=0;i<80;i++)candles.push(68245+(Math.random()-0.5)*200);
-let canvas=document.getElementById('c'),ctx=canvas.getContext('2d');
-function showPage(id){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-let nav=document.getElementById('bottomNav'),btn=document.getElementById('topBtn');
-if(id==='register-page'){nav.classList.remove('show');btn.style.display='none';}else{nav.classList.add('show');btn.style.display='block';}
-}
-function updatePrice(){
-let change=(Math.random()-0.48)*25;price+=change;candles.shift();candles.push(price);
-document.getElementById('livePrice').innerText='$'+price.toFixed(2);
-document.getElementById('btcPrice1').innerText='$'+price.toFixed(2);
-document.getElementById('btcPrice2').innerText='$'+price.toFixed(2);
-let ch=document.getElementById('liveChange');ch.innerText=(change>0?'+':'')+change.toFixed(2)+' LIVE • Real Chart';ch.style.color=change>0?'#0ECB81':'#F6465D';
-drawChart();updatePnL();
-}
-function drawChart(){
-ctx.clearRect(0,0,350,280);
-let min=Math.min(...candles),max=Math.max(...candles),range=max-min||1;
-ctx.strokeStyle='#1E2329';ctx.lineWidth=1;for(let i=0;i<4;i++){ctx.beginPath();ctx.moveTo(0,i*70);ctx.lineTo(350,i*70);ctx.stroke();}
-ctx.beginPath();ctx.strokeStyle='#FCD535';ctx.lineWidth=3;
-candles.forEach((p,i)=>{let x=i*(350/candles.length),y=260-((p-min)/range*220);if(i==0)ctx.moveTo(x,y);else ctx.lineTo(x,y);});ctx.stroke();
-ctx.lineTo(350,280);ctx.lineTo(0,280);ctx.closePath();let grad=ctx.createLinearGradient(0,0,0,280);grad.addColorStop(0,'rgba(252,213,53,0.3)');grad.addColorStop(1,'rgba(252,213,53,0)');ctx.fillStyle=grad;ctx.fill();
-}
-function doTrade(type){positions.push({type,entry:price,amount:100,id:Date.now()});renderTrades();}
-function renderTrades(){
-document.getElementById('openTrades').innerHTML=positions.map((p,i)=>`<div class="trade-card"><div><b style="color:${p.type=='BUY'?'#0ECB81':'#F6465D'}">${p.type}</b> $${p.entry.toFixed(2)}<br><small id="pl${i}" style="font-weight:bold">$0.00</small></div><button class="close-btn" onclick="closeTrade(${i})">CLOSE</button></div>`).join('')||'<p style="color:#848E9C;font-size:12px;margin-top:8px">No open trades. Tap BUY or SELL</p>';
-}
-function closeTrade(idx){let p=positions[idx];let pl=p.type=='BUY'?(price-p.entry)*0.5:(p.entry-price)*0.5;balance+=pl;positions.splice(idx,1);renderTrades();updatePnL();alert('Closed! Profit: $'+pl.toFixed(2)+' added!');}
-function updatePnL(){let total=0;positions.forEach((p,i)=>{let pl=p.type=='BUY'?(price-p.entry)*0.5:(p.entry-price)*0.5;total+=pl;let el=document.getElementById('pl'+i);if(el){el.innerText=(pl>=0?'+$':'-$')+Math.abs(pl).toFixed(2)+' Live';el.style.color=pl>=0?'#0ECB81':'#F6465D';}});document.querySelectorAll('.bal').forEach(e=>e.innerText='$'+(balance+total).toFixed(2));document.getElementById('bal1').innerText='$'+(balance+total).toFixed(2);document.getElementById('pnl1').innerText='Total P/L: '+(total>=0?'+':'')+'$'+total.toFixed(2);document.getElementById('assetPnl').innerText='Total P/L: $'+total.toFixed(2)+' | Balance: $'+balance.toFixed(2);}
-setInterval(updatePrice,700);renderTrades();drawChart();
+let sent='', price=100, pts=[], pos=null, bal=1038.39, profit=0, hist=[], usdt=0;
+const cv=document.getElementById('c'), ctx=cv.getContext('2d');
+function resize(){cv.width=cv.offsetWidth*2; cv.height=cv.offsetHeight*2} resize();
+for(let i=0;i<80;i++){price+=(Math.random()-0.5)*3; pts.push(price)}
+function showLogin(){document.getElementById('regCard').style.display='none';document.getElementById('logCard').style.display='block'}
+function showReg(){document.getElementById('logCard').style.display='none';document.getElementById('regCard').style.display='block'}
+function sendCode(){let e=document.getElementById('email').value; if(!e){alert('Enter email');return} sent=Math.floor(100000+Math.random()*900000)+''; alert('Code to '+e+': '+sent+' (Real app sends to email)'); document.getElementById('code').value=sent;}
+function register(){let e=document.getElementById('email').value,c=document.getElementById('code').value,p1=document.getElementById('p1').value,p2=document.getElementById('p2').value; if(!e||!c||!p1||!p2){alert('Fill all');return} if(c!=sent){alert('Wrong code');return} if(p1!=p2){alert('Password mismatch');return} localStorage.setItem('z_email',e); localStorage.setItem('z_pass',p1); localStorage.setItem('z_logged','yes'); enter(e);}
+function login(){let e=document.getElementById('le').value,p=document.getElementById('lp').value; if(e==localStorage.getItem('z_email')&&p==localStorage.getItem('z_pass')){localStorage.setItem('z_logged','yes'); enter(e);} else alert('Wrong email or password - Please register first');}
+function enter(e){document.getElementById('auth').style.display='none'; document.getElementById('uTop').innerText=e.split('@')[0]; document.getElementById('pEmail').innerText=e;}
+function logout(){localStorage.removeItem('z_logged'); location.reload();}
+if(localStorage.getItem('z_logged')=='yes'){enter(localStorage.getItem('z_email')||'CEO')}
+function openTab(t){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('a')); document.getElementById('t'+t).classList.add('a'); document.querySelectorAll('.nav div').forEach(x=>x.classList.remove('on')); document.getElementById('n'+t).classList.add('on');}
+function draw(){ctx.clearRect(0,0,cv.width,cv.height); ctx.strokeStyle='#222'; ctx.beginPath(); ctx.moveTo(0,cv.height*0.33); ctx.lineTo(cv.width,cv.height*0.33); ctx.stroke(); ctx.beginPath(); ctx.moveTo(0,cv.height*0.66); ctx.lineTo(cv.width,cv.height*0.66); ctx.stroke(); ctx.strokeStyle='#FFD600'; ctx.lineWidth=4; ctx.shadowColor='#FFD600'; ctx.shadowBlur=15; ctx.beginPath(); pts.forEach((p,i)=>{let x=i/pts.length*cv.width; let y=cv.height-(p-70)/50*cv.height; if(i==0)ctx.moveTo(x,y); else ctx.lineTo(x,y)}); ctx.stroke(); ctx.shadowBlur=0; price+=(Math.random()-0.5)*1.8; pts.push(price); if(pts.length>80)pts.shift(); document.getElementById('priceTop').innerText='$'+price.toFixed(2); document.getElementById('live').innerHTML=(Math.random()>.5?'+':'-')+(Math.random()*2).toFixed(2)+' LIVE • 3D CHART'; if(pos){let pnl=pos.type=='BUY'?price-pos.entry:pos.entry-price; let v=pnl*10; document.getElementById('bal').innerText='Balance: $'+(bal+v).toFixed(2)+' • PnL: '+(v>=0?'+':'')+'$'+v.toFixed(2); document.getElementById('totalA').innerText='$'+(bal+v).toFixed(2); document.getElementById('openPos').innerHTML=`<div style="background:#222;padding:10px;border-radius:10px;display:flex;justify-content:space-between"><span>${pos.type} Entry $${pos.entry.toFixed(2)} <b style="color:${v>=0?'#0f0':'#f00'}">${v>=0?'+':''}$${v.toFixed(2)}</b></span><button onclick="closePos()" style="background:#FFD600;border:none;padding:6px 12px;border-radius:6px;font-weight:bold">CLOSE</button></div>`; document.getElementById('openPos2').innerHTML=document.getElementById('openPos').innerHTML;} requestAnimationFrame(draw);} draw();
+function trade(t){if(pos){alert('Close current first');return} pos={type:t,entry:price}; let fee=2; profit+=fee; document.getElementById('ceoProfit').innerText='GHS '+profit.toFixed(2); hist.push(t+' '+price.toFixed(2)+' Fee $'+fee); document.getElementById('history').innerHTML=hist.map(h=>'<div style=padding:6px 0;border-bottom:1px solid #222>'+h+'</div>').join('');}
+function closePos(){if(!pos)return; let pnl=pos.type=='BUY'?price-pos.entry:pos.entry-price; let v=pnl*10; bal+=v; usdt+=v>0?1:0; pos=null; document.getElementById('bal').innerText='Balance: $'+bal.toFixed(2); document.getElementById('totalA').innerText='$'+bal.toFixed(2); document.getElementById('openPos').innerText='No open trades. Tap BUY or SELL'; document.getElementById('openPos2').innerText='No open trades'; document.getElementById('usdtBal').innerText=usdt.toFixed(2)+' USDT'; alert('Closed! Balance $'+bal.toFixed(2));}
+function deposit(){let a=prompt('Deposit amount in GHS? MoMo: 0594347565'); if(a){alert('Send GHS '+a+' to 0594347565 - Your account will be credited. CEO profit +2%'); profit+=parseFloat(a)*0.02; document.getElementById('ceoProfit').innerText='GHS '+profit.toFixed(2); bal+=parseFloat(a)/15; document.getElementById('bal').innerText='Balance: $'+bal.toFixed(2);}}
+function withdraw(){let a=prompt('Withdraw amount in $'); if(a) alert('Withdraw request $'+a+' sent - Admin will approve');}
+function transfer(){let a=prompt('Transfer to which email?'); if(a) alert('Transferred to '+a);}
 </script>
 </body>
-  </html>
+                                                                                                                    </html>
