@@ -7,8 +7,9 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial;-webkit-tap-highlight-color:transparent}
 body{background:#0e0e0e;color:#fff;overflow:hidden}
 .top{background:linear-gradient(180deg,#FFD600,#e6c000);color:#000;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;font-weight:900;font-size:22px}
-.logo span{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:pointer;padding:8px 2px}
-#secretL{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;padding:12px 8px;font-size:24px;display:inline-block}
+.logo{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;letter-spacing:3px;cursor:pointer}
+.logo span{display:inline-block;padding:10px 2px;user-select:none;-webkit-user-select:none}
+#secretL{padding:12px 6px!important;font-size:22px}
 .live{color:#ff4d4d;padding:10px 15px;font-weight:bold;display:flex;justify-content:space-between;font-size:12px}
 .chartbox{margin:0 12px;background:radial-gradient(circle at center,#1a1a1a,#000);border-radius:18px;padding:10px;height:300px;border:1px solid #333;box-shadow:inset 0 0 30px #000}
 canvas{width:100%;height:100%}
@@ -24,28 +25,40 @@ canvas{width:100%;height:100%}
 .nav{position:fixed;bottom:0;left:0;right:0;background:#151515;display:flex;justify-content:space-around;padding:8px 0 12px;border-top:1px solid #222;z-index:5}
 .nav div{text-align:center;font-size:11px;color:#666;width:20%;padding:5px}
 .nav.on{color:#FFD600}
-.auth{position:fixed;inset:0;background:#0e0e0e;z-index:20;display:flex;align-items:center;justify-content:center;padding:20px}
+.auth{position:fixed;inset:0;background:#0e0e0e;z-index:20;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
 .auth-card{width:100%;max-width:360px;background:#1a1a1a;border-radius:18px;padding:20px;border:1px solid #222}
-.auth-card input{width:100%;padding:13px;margin:6px 0;border-radius:10px;border:none;background:#222;color:white}
+.auth-card input,.auth-card select{width:100%;padding:13px;margin:6px 0;border-radius:10px;border:none;background:#222;color:white;font-size:14px}
 </style>
 </head>
 <body>
 <div class="auth" id="auth">
 <div class="auth-card" id="regCard">
-<h2 style="text-align:center;color:#FFD600;letter-spacing:2px" class="logo" id="mainLogo"><span>Z</span><span>A</span><span id="secretL">L</span><span>A</span><span>G</span><span>O</span><span>4</span><span>4</span></h2>
-<p class="small" style="text-align:center;margin:5px 0 10px">Register new account</p>
-<input id="email" placeholder="Email address">
+<h2 class="logo" id="mainLogo" style="text-align:center;color:#FFD600"><span>Z</span><span>A</span><span id="secretL">L</span><span>A</span><span>G</span><span>O</span><span>4</span><span>4</span></h2>
+<p class="small" style="text-align:center;margin:5px 0 12px">Register new account</p>
+<input id="email" placeholder="Email address or Phone number">
+<select id="country">
+<option value="GH">🇬🇭 Ghana</option>
+<option value="NG">🇳🇬 Nigeria</option>
+<option value="ZA">🇿🇦 South Africa</option>
+<option value="KE">🇰🇪 Kenya</option>
+<option value="UG">🇺🇬 Uganda</option>
+<option value="TZ">🇹🇿 Tanzania</option>
+<option value="RW">🇷🇼 Rwanda</option>
+<option value="US">🇺🇸 USA</option>
+<option value="UK">🇬🇧 UK</option>
+<option value="OTHER">🌍 Other</option>
+</select>
+<input id="phone" placeholder="Phone number (e.g. 0594347565)">
 <div style="display:flex;gap:8px"><input id="code" placeholder="Verification code" style="flex:1"><button onclick="sendCode()" style="background:#333;color:#FFD600;border:none;padding:0 14px;border-radius:10px;font-weight:bold">Send Code</button></div>
 <input id="p1" type="password" placeholder="Password">
 <input id="p2" type="password" placeholder="Confirm Password">
 <button class="btnY" onclick="register()">REGISTER</button>
-<p class="small" style="text-align:center;margin-top:12px">I already have an account? <span onclick="showLogin()" style="color:#FFD600;text-decoration:underline;font-weight:bold">Log in</span></p>
-<p class="small" style="text-align:center;margin-top:8px;color:#444">CEO: Tap L 3x</p>
+<p class="small" style="text-align:center;margin-top:14px">I already have an account? <span onclick="showLogin()" style="color:#FFD600;text-decoration:underline;font-weight:bold">Log in</span></p>
 </div>
 <div class="auth-card" id="logCard" style="display:none">
-<h2 style="text-align:center;color:#FFD600" class="logo"><span>Z</span><span>A</span><span>L</span><span>A</span><span>G</span><span>O</span><span>4</span><span>4</span></h2>
+<h2 class="logo" style="text-align:center;color:#FFD600"><span>Z</span><span>A</span><span>L</span><span>A</span><span>G</span><span>O</span><span>4</span><span>4</span></h2>
 <p class="small" style="text-align:center;margin:5px 0 10px">Welcome back</p>
-<input id="le" placeholder="Email address">
+<input id="le" placeholder="Email address or Phone number">
 <input id="lp" type="password" placeholder="Password">
 <button class="btnY" onclick="login()">LOG IN</button>
 <p class="small" style="text-align:center;margin-top:12px">Don't have account? <span onclick="showReg()" style="color:#FFD600;text-decoration:underline;font-weight:bold">Register</span></p>
@@ -58,12 +71,12 @@ canvas{width:100%;height:100%}
 <div class="btns"><button class="b" onclick="trade('BUY')">BUY / LONG</button><button class="s" onclick="trade('SELL')">SELL / SHORT</button></div>
 <div style="text-align:center;color:#888;font-size:13px" id="bal">Balance: $1038.39</div>
 <div class="card"><h3>Open Positions</h3><div id="openPos" class="small" style="margin-top:8px">No open trades</div></div>
-<div class="card" id="ceoCard" style="display:none;background:linear-gradient(135deg,#1a1a1a,#3a3000);border:1px solid #FFD600"><h3 style="color:#FFD600">👑 CEO SECRET PANEL</h3><p>CEO Profit: <b id="ceoProfit" style="color:#FFD600">GHS 0.00</b></p><p class="small">Total Users: <span id="totalUsers">1</span></p><p class="small">Owner Mode: ACTIVE</p></div>
+<div class="card" id="ceoCard" style="display:none;background:linear-gradient(135deg,#1a1a1a,#3a3000);border:1px solid #FFD600"><h3 style="color:#FFD600">👑 CEO SECRET PANEL</h3><p>CEO Profit: <b id="ceoProfit" style="color:#FFD600">GHS 0.00</b></p><p class="small">Total Users: <span id="totalUsers">1</span> | Country: <span id="uCountry">GH</span></p><p class="small">Owner Mode: ACTIVE</p></div>
 </div>
 <div class="tab" id="tMarkets"><div class="card"><h3>Markets</h3><div class="row"><b>BTC/USDT</b><b>$67,432</b></div><div class="row"><b>ETH/USDT</b><b>$3,210</b></div><div class="row"><b>SOL/USDT</b><b>$145.5</b></div></div></div>
 <div class="tab" id="tTrade"><div class="card"><h3>History</h3><div id="history" class="small">No history</div></div></div>
 <div class="tab" id="tAssets"><div class="card"><h3>Total Assets</h3><h1 id="totalA" style="color:#FFD600">$1038.39</h1><div style="display:flex;gap:8px;margin-top:10px"><button class="b" onclick="deposit()">Deposit</button><button class="s" onclick="withdraw()">Withdraw</button></div><p class="small" style="margin-top:10px">MoMo: 0594347565</p></div></div>
-<div class="tab" id="tProfile"><div class="card"><h3>Profile</h3><p>Email: <b id="pEmail">-</b></p><button style="background:#222;color:#fff;border:none;width:100%;padding:12px;border-radius:10px;margin-top:10px" onclick="logout()">LOG OUT</button></div></div>
+<div class="tab" id="tProfile"><div class="card"><h3>Profile</h3><p>Email/Phone: <b id="pEmail">-</b></p><p class="small" style="margin-top:6px">Country: <b id="pCountry">-</b></p><button style="background:#222;color:#fff;border:none;width:100%;padding:12px;border-radius:10px;margin-top:10px" onclick="logout()">LOG OUT</button></div></div>
 <div class="nav">
 <div class="on" id="nHome" onclick="openTab('Home')">🏠<br>Home</div>
 <div id="nMarkets" onclick="openTab('Markets')">📈<br>Markets</div>
@@ -102,12 +115,58 @@ function ownerEnter(){
 }
 function showLogin(){document.getElementById('regCard').style.display='none';document.getElementById('logCard').style.display='block'}
 function showReg(){document.getElementById('logCard').style.display='none';document.getElementById('regCard').style.display='block'}
-function sendCode(){let e=document.getElementById('email').value; if(!e){alert('Enter email');return} sent=Math.floor(100000+Math.random()*900000)+''; alert('Demo Code: '+sent); document.getElementById('code').value=sent;}
-function register(){let e=document.getElementById('email').value,c=document.getElementById('code').value,p1=document.getElementById('p1').value,p2=document.getElementById('p2').value; if(!e||!c||!p1||!p2){alert('Fill all');return} if(c!=sent){alert('Wrong code');return} if(p1!=p2){alert('Password mismatch');return} localStorage.setItem('z_email',e); localStorage.setItem('z_pass',p1); localStorage.setItem('z_logged','yes'); localStorage.removeItem('z_owner'); enter(e);}
-function login(){let e=document.getElementById('le').value,p=document.getElementById('lp').value; if(e==localStorage.getItem('z_email')&&p==localStorage.getItem('z_pass')){localStorage.setItem('z_logged','yes'); enter(e);} else alert('Wrong');}
-function enter(e){document.getElementById('auth').style.display='none'; document.getElementById('uTop').innerText=e.split('@')[0]; document.getElementById('pEmail').innerText=e; if(localStorage.getItem('z_owner')=='yes'){document.getElementById('ceoCard').style.display='block'; document.getElementById('uTop').innerText='OWNER 👑';}}
+function sendCode(){
+ let e=document.getElementById('email').value;
+ let p=document.getElementById('phone').value;
+ if(!e &&!p){alert('Enter Email or Phone');return}
+ sent=Math.floor(100000+Math.random()*900000)+'';
+ alert('Demo Code: '+sent+' sent to '+(e||p));
+ document.getElementById('code').value=sent;
+}
+function register(){
+ let e=document.getElementById('email').value;
+ let ctry=document.getElementById('country').value;
+ let ph=document.getElementById('phone').value;
+ let c=document.getElementById('code').value;
+ let p1=document.getElementById('p1').value;
+ let p2=document.getElementById('p2').value;
+ if(!e){alert('Enter Email or Phone');return}
+ if(!ph){alert('Enter Phone number');return}
+ if(!c||!p1||!p2){alert('Fill all');return}
+ if(c!=sent){alert('Wrong code, tap Send Code');return}
+ if(p1!=p2){alert('Password mismatch');return}
+ localStorage.setItem('z_email',e);
+ localStorage.setItem('z_phone',ph);
+ localStorage.setItem('z_country',ctry);
+ localStorage.setItem('z_pass',p1);
+ localStorage.setItem('z_logged','yes');
+ localStorage.removeItem('z_owner');
+ enter(e,ctry);
+}
+function login(){
+ let e=document.getElementById('le').value;
+ let p=document.getElementById('lp').value;
+ if(e==localStorage.getItem('z_email')&&p==localStorage.getItem('z_pass')){
+  localStorage.setItem('z_logged','yes');
+  enter(e,localStorage.getItem('z_country')||'GH');
+ } else alert('Wrong email/phone or password');
+}
+function enter(e,ctry){
+ document.getElementById('auth').style.display='none';
+ document.getElementById('uTop').innerText=e.split('@')[0].substring(0,10);
+ document.getElementById('pEmail').innerText=e;
+ document.getElementById('pCountry').innerText=ctry||'GH';
+ document.getElementById('uCountry').innerText=ctry||'GH';
+ if(localStorage.getItem('z_owner')=='yes'){
+  document.getElementById('ceoCard').style.display='block';
+  document.getElementById('uTop').innerText='OWNER 👑';
+ }
+}
 function logout(){localStorage.removeItem('z_logged'); location.reload();}
-if(localStorage.getItem('z_logged')=='yes'){enter(localStorage.getItem('z_email')||'CEO'); if(localStorage.getItem('z_owner')=='yes'){document.getElementById('ceoCard').style.display='block'}}
+if(localStorage.getItem('z_logged')=='yes'){
+ enter(localStorage.getItem('z_email')||'CEO',localStorage.getItem('z_country')||'GH');
+ if(localStorage.getItem('z_owner')=='yes'){document.getElementById('ceoCard').style.display='block'}
+}
 function openTab(t){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('a')); document.getElementById('t'+t).classList.add('a'); document.querySelectorAll('.nav div').forEach(x=>x.classList.remove('on')); document.getElementById('n'+t).classList.add('on');}
 function draw(){ctx.clearRect(0,0,cv.width,cv.height); ctx.strokeStyle='#222'; ctx.beginPath(); ctx.moveTo(0,cv.height*0.33); ctx.lineTo(cv.width,cv.height*0.33); ctx.stroke(); ctx.strokeStyle='#FFD600'; ctx.lineWidth=4; ctx.shadowColor='#FFD600'; ctx.shadowBlur=12; ctx.beginPath(); pts.forEach((p,i)=>{let x=i/pts.length*cv.width; let y=cv.height-(p-70)/50*cv.height; if(i==0)ctx.moveTo(x,y); else ctx.lineTo(x,y)}); ctx.stroke(); ctx.shadowBlur=0; price+=(Math.random()-0.5)*1.2; pts.push(price); if(pts.length>80)pts.shift(); document.getElementById('priceTop').innerText='$'+price.toFixed(2); if(pos){let pnl=pos.type=='BUY'?price-pos.entry:pos.entry-price; let v=pnl*10; document.getElementById('bal').innerText='Balance: $'+(bal+v).toFixed(2)+' PnL: $'+v.toFixed(2); document.getElementById('totalA').innerText='$'+(bal+v).toFixed(2); document.getElementById('openPos').innerHTML=`<div style="background:#222;padding:10px;border-radius:10px;display:flex;justify-content:space-between"><span>${pos.type} $${pos.entry.toFixed(2)} <b style="color:${v>=0?'#0f0':'#f00'}">$${v.toFixed(2)}</b></span><button onclick="closePos()" style="background:#FFD600;border:none;padding:6px 12px;border-radius:6px;font-weight:bold">CLOSE</button></div>`} requestAnimationFrame(draw);} draw();
 function trade(t){if(pos){alert('Close first');return} pos={type:t,entry:price}; profit+=2; document.getElementById('ceoProfit').innerText='GHS '+profit.toFixed(2); hist.push(t+' '+price.toFixed(2)); document.getElementById('history').innerHTML=hist.map(h=>'<div style=padding:6px 0>'+h+'</div>').join('');}
@@ -116,4 +175,4 @@ function deposit(){let a=prompt('Deposit GHS amount? To: 0594347565'); if(a){pro
 function withdraw(){let a=prompt('Withdraw $'); if(a) alert('Request sent');}
 </script>
 </body>
-  </html>
+ </html>
