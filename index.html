@@ -77,7 +77,8 @@ canvas{width:100%;height:100%}
 let sent='', price=100, pts=[], pos=null, bal=1038.39, profit=0, hist=[], tapCount=0, lastTap=0, logoTap=0, lastLogoTap=0;
 const cv=document.getElementById('c'), ctx=cv.getContext('2d');
 function resize(){cv.width=cv.offsetWidth*2; cv.height=cv.offsetHeight*2} resize();
-for(let i=0;i<80;i++){pts.push(100+(Math.random()-0.5)*3)}
+let candles=[];
+for(let i=0;i<50;i++){let o=100+(Math.random()-0.5)*2; let c=o+(Math.random()-0.5)*1.5; let h=Math.max(o,c)+Math.random()*0.8; let l=Math.min(o,c)-Math.random()*0.8; candles.push({o,c,h,l});}
 document.getElementById('secretL').addEventListener('click',function(e){
  e.preventDefault(); let now=Date.now(); if(now-lastTap>2000) tapCount=0; tapCount++; lastTap=now; if(tapCount>=3){ownerEnter(); tapCount=0;}
 });
@@ -95,14 +96,36 @@ if(localStorage.getItem('z_logged')=='yes'){enter(localStorage.getItem('z_email'
 function openTab(t){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('a')); document.getElementById('t'+t).classList.add('a'); document.querySelectorAll('.nav div').forEach(x=>x.classList.remove('on')); document.getElementById('n'+t).classList.add('on');}
 function draw(){
  ctx.clearRect(0,0,cv.width,cv.height);
- ctx.strokeStyle='#222'; ctx.lineWidth=1;
- ctx.beginPath(); for(let i=1;i<4;i++){ctx.moveTo(0,cv.height*i/4); ctx.lineTo(cv.width,cv.height*i/4);} ctx.stroke();
- price += (Math.random()-0.5)*0.7 + Math.sin(Date.now()/2000)*0.08;
- pts.push(price); if(pts.length>80)pts.shift();
- ctx.strokeStyle='#FFD600'; ctx.lineWidth=3; ctx.shadowColor='#FFD600'; ctx.shadowBlur=8;
- ctx.beginPath();
- pts.forEach((p,i)=>{let x=i/pts.length*cv.width; let y=cv.height*0.7 - (p-98)*20; if(i==0)ctx.moveTo(x,y); else ctx.lineTo(x,y);});
- ctx.stroke(); ctx.shadowBlur=0;
+ ctx.strokeStyle='#1a1a1a'; ctx.lineWidth=1;
+ for(let i=1;i<5;i++){ctx.beginPath(); ctx.moveTo(0,cv.height*i/5); ctx.lineTo(cv.width,cv.height*i/5); ctx.stroke();}
+ let last=candles[candles.length-1];
+ let change=(Math.random()-0.5)*0.9 + Math.sin(Date.now()/1800)*0.15;
+ let newC=last.c+change;
+ let newO=last.c;
+ let newH=Math.max(newO,newC)+Math.random()*0.6;
+ let newL=Math.min(newO,newC)-Math.random()*0.6;
+ if(Math.random()>0.7){
+   candles.push({o:newO,c:newC,h:newH,l:newL});
+   if(candles.length>60) candles.shift();
+ }else{
+   last.c=newC; last.h=Math.max(last.h,newH); last.l=Math.min(last.l,newL);
+ }
+ price=candles[candles.length-1].c;
+ let w=cv.width/candles.length*0.55;
+ candles.forEach((k,i)=>{
+   let x=i/candles.length*cv.width;
+   let isGreen=k.c>=k.o;
+   ctx.fillStyle=isGreen?'#00e676':'#ff3b3b';
+   ctx.strokeStyle=ctx.fillStyle;
+   ctx.beginPath();
+   let yH=cv.height*0.7 - (k.h-98)*20;
+   let yL=cv.height*0.7 - (k.l-98)*20;
+   ctx.moveTo(x+w/2,yH); ctx.lineTo(x+w/2,yL); ctx.stroke();
+   let yO=cv.height*0.7 - (k.o-98)*20;
+   let yC=cv.height*0.7 - (k.c-98)*20;
+   let bh=Math.abs(yO-yC); if(bh<3) bh=3;
+   ctx.fillRect(x, Math.min(yO,yC), w, bh);
+ });
  document.getElementById('priceTop').innerText='$'+price.toFixed(2);
  if(pos){let pnl=pos.type=='BUY'?price-pos.entry:pos.entry-price; let v=pnl*10; document.getElementById('bal').innerText='Balance: $'+(bal+v).toFixed(2)+' ('+(v>=0?'+':'')+v.toFixed(2)+')'; document.getElementById('totalA').innerText='$'+(bal+v).toFixed(2); document.getElementById('openPos').innerHTML=`<div style="background:#222;padding:10px;border-radius:10px;display:flex;justify-content:space-between"><span>${pos.type} @ ${pos.entry.toFixed(2)} <b style="color:${v>=0?'#0f0':'#f00'}">${v.toFixed(2)}</b></span><button onclick="closePos()" style="background:#FFD600;border:none;padding:6px 12px;border-radius:6px;font-weight:bold">CLOSE</button></div>`}
  requestAnimationFrame(draw);
@@ -113,4 +136,4 @@ function deposit(){let a=prompt('Enter deposit amount (GHS):'); if(a){profit+=pa
 function withdraw(){let a=prompt('Enter withdraw amount ($):'); if(a) alert('Withdraw request $'+a+' sent - Awaiting approval');}
 </script>
 </body>
-                                                                        </html>
+                                             </html>
