@@ -53,9 +53,7 @@ canvas{width:100%;height:100%}
 <p class="small" style="text-align:center;margin-top:12px">No account? <span onclick="showReg()" style="color:#FFD600;text-decoration:underline;font-weight:bold">Register</span></p>
 </div>
 </div>
-
 <div class="top"><div class="logo"><span>Z</span><span>A</span><span>L</span><span>A</span><span>G</span><span>O</span><span>4</span><span>4</span></div><span id="uTop" style="font-size:11px">TRADING</span></div>
-
 <div class="tab a" id="tHome">
 <div class="live"><span>● LIVE MARKET</span><span style="color:#FFD600" id="priceTop">$100.00</span></div>
 <div class="chartbox"><canvas id="c"></canvas></div>
@@ -64,12 +62,10 @@ canvas{width:100%;height:100%}
 <div class="card"><h3>Open Positions</h3><div id="openPos" class="small" style="margin-top:8px">No open trades</div></div>
 <div class="card" id="ceoCard" style="display:none;background:linear-gradient(135deg,#1a1a1a,#3a3000);border:1px solid #FFD600"><h3 style="color:#FFD600">👑 CEO PANEL</h3><p>Profit: <b id="ceoProfit" style="color:#FFD600">GHS 0.00</b></p><p class="small">Users: <span id="totalUsers">1</span></p></div>
 </div>
-
-<div class="tab" id="tMarkets"><div class="card"><h3>Markets</h3><div class="row"><b>BTC/USDT</b><b id="btc">$67,432</b></div><div class="row"><b>ETH/USDT</b><b id="eth">$3,210</b></div><div class="row"><b>SOL/USDT</b><b id="sol">$145.50</b></div></div></div>
-<div class="tab" id="tTrade"><div class="card"><h3>Trade History</h3><div id="history" class="small">No history</div></div></div>
+<div class="tab" id="tMarkets"><div class="card"><h3>Markets</h3><div class="row"><b>BTC/USDT</b><b>$67,432</b></div><div class="row"><b>ETH/USDT</b><b>$3,210</b></div><div class="row"><b>SOL/USDT</b><b>$145.50</b></div></div></div>
+<div class="tab" id="tTrade"><div class="card"><h3>History</h3><div id="history" class="small">No history</div></div></div>
 <div class="tab" id="tAssets"><div class="card"><h3>Total Assets</h3><h1 id="totalA" style="color:#FFD600">$1038.39</h1><div style="display:flex;gap:8px;margin-top:12px"><button class="b" onclick="deposit()">Deposit</button><button class="s" onclick="withdraw()">Withdraw</button></div></div></div>
 <div class="tab" id="tProfile"><div class="card"><h3>Profile</h3><p>Account: <b id="pEmail">-</b></p><button style="background:#222;color:#fff;border:none;width:100%;padding:12px;border-radius:10px;margin-top:10px" onclick="logout()">LOG OUT</button></div></div>
-
 <div class="nav">
 <div class="on" id="nHome" onclick="openTab('Home')">🏠<br>Home</div>
 <div id="nMarkets" onclick="openTab('Markets')">📈<br>Markets</div>
@@ -77,7 +73,6 @@ canvas{width:100%;height:100%}
 <div id="nAssets" onclick="openTab('Assets')">💼<br>Assets</div>
 <div id="nProfile" onclick="openTab('Profile')">👤<br>Profile</div>
 </div>
-
 <script>
 let sent='', price=100, pts=[], pos=null, bal=1038.39, profit=0, hist=[], tapCount=0, lastTap=0, logoTap=0, lastLogoTap=0;
 const cv=document.getElementById('c'), ctx=cv.getContext('2d');
@@ -102,7 +97,7 @@ function draw(){
  ctx.clearRect(0,0,cv.width,cv.height);
  ctx.strokeStyle='#222'; ctx.lineWidth=1;
  ctx.beginPath(); for(let i=1;i<4;i++){ctx.moveTo(0,cv.height*i/4); ctx.lineTo(cv.width,cv.height*i/4);} ctx.stroke();
- price += (Math.random()-0.5)*0.15; // SMOOTH - like real market
+ price += (Math.random()-0.5)*0.7 + Math.sin(Date.now()/2000)*0.08;
  pts.push(price); if(pts.length>80)pts.shift();
  ctx.strokeStyle='#FFD600'; ctx.lineWidth=3; ctx.shadowColor='#FFD600'; ctx.shadowBlur=8;
  ctx.beginPath();
@@ -118,4 +113,4 @@ function deposit(){let a=prompt('Enter deposit amount (GHS):'); if(a){profit+=pa
 function withdraw(){let a=prompt('Enter withdraw amount ($):'); if(a) alert('Withdraw request $'+a+' sent - Awaiting approval');}
 </script>
 </body>
- </html>
+                                                                        </html>
